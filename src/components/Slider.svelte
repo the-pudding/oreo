@@ -1,6 +1,13 @@
 <script>
   export let name = "Version";
-  const displayNames = ["Oreo mini", "Thin Oreo", "Classic Oreo"];
+  const displayNames = [
+    "mini",
+    "thin",
+    "classic",
+    "double stuf",
+    "mega stuf",
+    "most stuf",
+  ];
   let version = 0;
 
   $: display = displayNames[+version];
@@ -8,7 +15,11 @@
 
 <p>{name}: {display}</p>
 
-<input min="0" max="2" bind:value="{version}" type="range" />
+<input
+  min="0"
+  max="{displayNames.length - 1}"
+  bind:value="{version}"
+  type="range" />
 
 <style>
   input {
