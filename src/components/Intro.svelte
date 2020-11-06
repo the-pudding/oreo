@@ -1,3 +1,7 @@
+<script>
+  import Slider from "./Slider.svelte";
+</script>
+
 <section id="intro">
   <h1>Oreos and the Art of Crossword Puzzling</h1>
   <div>
@@ -10,6 +14,8 @@
         rel="noopener">Russell Goldenberg</a>
     </p>
   </div>
+
+  <Slider />
 </section>
 
 <style>
