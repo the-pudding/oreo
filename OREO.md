@@ -33,29 +33,54 @@ OREO has been an answer over 3,000 times (including use as a prefix, not related
 - slider (just piles of oreos = minutes)
 - not sponsored by Oreos (DM me if you are Oreos and would like to)
 - have people fill in puzzle to see filler words
-- crossword of flavors
-- histogram of new oreo clues over time
 
 ## Story outline
 
-- mustard clue hook
+- **mustard clue hook**
   - how did we get here? a data history
   - what can it teach us about crossword puzzles
-- why? because it is super common / played out
-  - letter frequency explanation (score?)
-  - how puzzles are made (aka why this word is used often)
-  - viz of boring words vs. oreo
-  - odds of a 4-letter word starting with O being oreo
+- **why? because it is super common / played out**
+  - its popularity
+    - viz: boring words vs. oreo (ie oreos overall rank)
+      - data: done
+      - charts:
+        - bar chart?
+        - grid of names, mini bars?
+        - pie chart? (lol)
+  - letter frequency explanation
+    - viz: bar chart
+  - how puzzles are made / filler words
+    - viz: odds, of a 4-letter word starting with O being oreo, how many words (used) could fit if 4 letters and R at 3rd, etc
   - when answers started incoporating the brand (just nyt, over time)
+    - data: done
+    - viz: answers over time chart cookie vs. prefix
   - oreo ranking comparison (next popular brand?)
-  - easier to come up with new clue and new word
-- so they had to get creative with clues, explain clue variety
+    -viz: table of most visible brands
+  - segue: easier to come up with new clue and new word
+- **so they had to get creative with clues, explain clue variety**
   - explain the mustard origin story
-  - easy/hard, frequency of common words (word cloud!) / repeat clues
-  - tsne of clues: show how mustard (doesn't) fit in
-  - playable crossword of every re-used clue
+  - mustard was chosen because it made the clue harder for this easy word
+    - viz: frequency of common words (word cloud!)
+    - viz: repeat clues
+    - viz: timeline of first occurences of descriptive word (noun, adj, verb?) over time (just NYT?)
+    - viz: tsne of clues: show how mustard (doesn't) fit in
+    - viz: playable crossword of every re-used clue
 - bonus material
+  - antelope
+  - AOC
+  - buddy
+  - DYK oreos are older than chocolate chip?
+  - playble crossword of flavors (clue is always: Oreo flavor)
+  - oreo commercial: https://www.youtube.com/watch?v=YIRtruagdPc
 
 There was a clue in a USA Today crossword puzzle about people eating Oreos with mustard and the internet lost it.
 
 To some, the craziest part of 2020 was a crossword puzzle clue; “Cookie that some people eat with mustard.” Rage ensued.
+
+## Data notes
+
+Total clues: 6317463
+Total clues since 1993: 4850005
+4-letter since 1993: 1572316
+OREO since 1993: 2912 (1 in 540)
+1993 Rank: 7th (4-letter), 18th (all)

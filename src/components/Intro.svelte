@@ -3,7 +3,7 @@
 </script>
 
 <section id="intro">
-  <h1>Oreos and the Art of Crossword Puzzling</h1>
+  <h1>Oreos and the Art of Crossword Puzzle Construction</h1>
   <div>
     <time>November 2020</time>
     &nbsp;|&nbsp;
@@ -21,10 +21,10 @@
 <style>
   section {
     margin: 0 auto;
-    max-width: 30em;
+    max-width: 50em;
   }
   h1 {
-    font-size: 6em;
+    font-size: 5em;
     font-weight: var(--bold);
     line-height: 1;
   }
