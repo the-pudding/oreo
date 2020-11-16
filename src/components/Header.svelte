@@ -12,6 +12,13 @@
 </header>
 
 <style>
+  header {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000;
+  }
   .wordmark {
     max-width: 10em;
     margin: 1em auto;

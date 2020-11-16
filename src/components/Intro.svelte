@@ -15,13 +15,15 @@
     </p>
   </div>
 
-  <Slider />
+  <p style="margin-top: 2rem;">Arrow Key right.</p>
+  <!-- <Slider /> -->
 </section>
 
 <style>
   section {
     margin: 0 auto;
     max-width: 50em;
+    margin-top: 6rem;
   }
   h1 {
     font-size: 5em;

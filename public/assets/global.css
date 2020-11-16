@@ -66,6 +66,28 @@ input {
 	fill: var(--blue-light);
 }
 
+main {
+	height: 100vh;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(2) .swiper-slide {
+	background: red;
+}
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(3) .swiper-slide {
+	background: green;
+}
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(4) .swiper-slide {
+	background: purple;
+}
+
+
 input[type=range] {
   width: 100%;
   margin: 12px 0;
