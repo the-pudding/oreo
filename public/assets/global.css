@@ -76,15 +76,15 @@ main {
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(2) .swiper-slide {
-	background: red;
+	background: #333;
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(3) .swiper-slide {
-	background: green;
+	background: #555;
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(4) .swiper-slide {
-	background: purple;
+	background: #777;
 }
 
 

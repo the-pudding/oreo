@@ -1,13 +1,28 @@
 <script>
   import { onMount } from "svelte";
+  import { csv } from "d3-fetch";
   import { Swiper, SwiperSlide } from "swiper/svelte";
   import SwiperCore, { Keyboard } from "swiper";
+  import copy from "../data/copy.json";
   import Meta from "./Meta.svelte";
   import Header from "./Header.svelte";
   import Intro from "./Intro.svelte";
+  import Chart from "./Chart.svelte";
+  import popularData from "../data/xd-four-letter-popular-1993.csv";
+
+  SwiperCore.use([Keyboard]);
+
+  const horizontalOptions = {
+    direction: "horizontal",
+    keyboard: true,
+  };
+  const verticalOptions = {
+    direction: "vertical",
+    keyboard: true,
+  };
 
   let swiperInstance;
-  let mounted;
+  let mounted = true;
 
   const createSwiper = (e) => {
     swiperInstance = e.detail[0];
@@ -15,9 +30,24 @@
 
   const onSlideChange = () => {};
 
+  const cleanData = (data) => {
+    return data.map((d) => ({
+      ...d,
+      count: +d.count,
+      percent: +d.percent,
+      score: +d.score,
+    }));
+  };
+
   onMount(() => {
     mounted = true;
-    SwiperCore.use([Keyboard]);
+
+    csv("assets/data/xd-four-letter-score-1993.csv")
+      .then(cleanData)
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err);
+      });
   });
 </script>
 
@@ -27,107 +57,33 @@
 
 {#if mounted}
   <Swiper
-    direction="horizontal"
-    grabCursor="{true}"
-    keyboard="{true}"
+    {...horizontalOptions}
     on:slideChange="{onSlideChange}"
     on:swiper="{createSwiper}">
     <SwiperSlide>
       <Intro />
     </SwiperSlide>
-    <SwiperSlide>
-      <Swiper direction="vertical" keyboard="{true}">
-        <SwiperSlide>
-          <p>
-            Mini. Bite-size and snackable, the flavor without the calories. (~30
-            seconds). Swipe Down.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>
-            To some, the craziest part of 2020 was the USA Today crossword
-            puzzle clue, a “cookie that some people eat with
-            <mark>mustard.</mark>” The internet lost it.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>
-            This happened because the answer &mdash;
-            <strong>OREO</strong>
-            &mdash; is an easy word to place in a puzzle since it contains three
-            of the five most used letters.
-          </p>
-          <p>
-            As the 7th most common four-letter answer, clues are becoming stale.
-            For example, the clue "sandwich cookie" has been over 100 times
-            since 1993. So
-            <mark>mustard</mark>
-            was used to spice things up.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Swipe right for a deeper dive.</p>
-        </SwiperSlide>
-      </Swiper>
-    </SwiperSlide>
-    <SwiperSlide>
-      <Swiper direction="vertical" keyboard="{true}">
-        <SwiperSlide>
-          <p>
-            Classic. What most people would say is the right amount. (~3
-            minutes). Swipe Down.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>
-            To some, the craziest part of 2020 was the USA Today crossword
-            puzzle clue, a “cookie that some people eat with
-            <mark>mustard.</mark>” The internet lost it.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Slide C</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Slide D</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Swipe right for an even deeper dive.</p>
-        </SwiperSlide>
-      </Swiper>
-    </SwiperSlide>
-    <SwiperSlide>
-      <Swiper direction="vertical" keyboard="{true}">
-        <SwiperSlide>
-          <p>
-            Mega Stuf. Filled with more than you need, but will probably enjoy.
-            (~10+ minutes). Swipe Down.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>
-            To some, the craziest part of 2020 was the USA Today crossword
-            puzzle clue, a “cookie that some people eat with
-            <mark>mustard.</mark>” The internet lost it.
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Slide C</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Slide D</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Slide E</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>Slide F</p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p>That is literally everything.</p>
-        </SwiperSlide>
-      </Swiper>
-    </SwiperSlide>
+    {#each copy.stories as { version, slides }}
+      <SwiperSlide>
+        <Swiper {...verticalOptions}>
+          {#each slides as { text, className, chart }}
+            <SwiperSlide
+              slideClass="swiper-slide {className ? `slide--${className}` : ''}">
+              {#if text}
+                <p>
+                  {@html text}
+                </p>
+              {/if}
+              {#if chart}
+                <figure>
+                  <Chart chart="{chart}" />
+                </figure>
+              {/if}
+            </SwiperSlide>
+          {/each}
+        </Swiper>
+      </SwiperSlide>
+    {/each}
   </Swiper>
 {/if}
 
