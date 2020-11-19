@@ -32,9 +32,8 @@ body {
 }
 
 p {
-	line-height: 1.6;
+	line-height: 1.5;
 	margin: 1em 0;
-	font-weight: var(--bold);
 }
 
 a, a:visited, a:active {
@@ -62,6 +61,19 @@ input {
 	cursor: pointer;
 }
 
+strong {
+	font-weight: 600;
+}
+
+em {
+	font-style: italic;
+}
+
+mark {
+	padding: 0.125em 0.25em;
+	margin: 0 0.125em;
+}
+
 .wordmark svg path {
 	fill: var(--blue-light);
 }
@@ -86,7 +98,6 @@ main {
 .swiper-container-horizontal .swiper-slide:nth-of-type(4) .swiper-slide {
 	background: #777;
 }
-
 
 input[type=range] {
   width: 100%;

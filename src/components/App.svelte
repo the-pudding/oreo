@@ -3,11 +3,13 @@
   import { csv } from "d3-fetch";
   import { Swiper, SwiperSlide } from "swiper/svelte";
   import SwiperCore, { Keyboard } from "swiper";
-  import copy from "../data/copy.json";
+
   import Meta from "./Meta.svelte";
   import Header from "./Header.svelte";
   import Intro from "./Intro.svelte";
-  import Chart from "./Chart.svelte";
+  import Slides from "./Slides.svelte";
+
+  import copy from "../data/copy.json";
   import popularData from "../data/xd-four-letter-popular-1993.csv";
 
   SwiperCore.use([Keyboard]);
@@ -51,7 +53,7 @@
   });
 </script>
 
-<Meta />
+<Meta {...copy} />
 
 <Header />
 
@@ -61,35 +63,15 @@
     on:slideChange="{onSlideChange}"
     on:swiper="{createSwiper}">
     <SwiperSlide>
-      <Intro />
+      <Intro hed="{copy.hed}" />
     </SwiperSlide>
-    {#each copy.stories as { version, slides }}
+
+    {#each copy.levels as level}
       <SwiperSlide>
         <Swiper {...verticalOptions}>
-          {#each slides as { text, className, chart }}
-            <SwiperSlide
-              slideClass="swiper-slide {className ? `slide--${className}` : ''}">
-              {#if text}
-                <p>
-                  {@html text}
-                </p>
-              {/if}
-              {#if chart}
-                <figure>
-                  <Chart chart="{chart}" />
-                </figure>
-              {/if}
-            </SwiperSlide>
-          {/each}
+          <Slides {...level} />
         </Swiper>
       </SwiperSlide>
     {/each}
   </Swiper>
 {/if}
-
-<style>
-  p {
-    text-align: center;
-    padding-top: 10rem;
-  }
-</style>

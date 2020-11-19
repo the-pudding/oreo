@@ -115,3 +115,10 @@ OR_O
 O_EO
 _REO
 ```
+
+## levels
+
+levels of complexity
+levels of nerdiness
+levels of depth
+levels of attention span

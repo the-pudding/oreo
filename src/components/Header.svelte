@@ -1,26 +1,14 @@
 <script>
-  import wordmark from "../svg/wordmark.svg";
 </script>
 
-<header>
-  <div class="wordmark">
-    <a
-      href="https://pudding.cool"
-      target="_blank"
-      rel="noopener">{@html wordmark}</a>
-  </div>
-</header>
+<header></header>
 
 <style>
   header {
-    width: 100%;
+    /* width: 100%;
     top: 0;
     left: 0;
     position: fixed;
-    z-index: 1000;
-  }
-  .wordmark {
-    max-width: 10em;
-    margin: 1em auto;
+    z-index: 1000; */
   }
 </style>

@@ -1,36 +1,41 @@
 <script>
-  import Slider from "./Slider.svelte";
+  import wordmark from "../svg/wordmark.svg";
+  export let hed;
 </script>
 
 <section id="intro">
-  <h1>Oreos and the Art of Crossword Puzzle Construction</h1>
-  <div>
-    <time>November 2020</time>
+  <div class="wordmark">
+    <a href="https://pudding.cool">{@html wordmark}</a>
+  </div>
+
+  <h1>{hed}</h1>
+  <div class="byline">
+    <time>December 2020</time>
     &nbsp;|&nbsp;
     <p>
-      <a
-        href="https://pudding.cool/author/russell-goldenberg"
-        target="_blank"
-        rel="noopener">Russell Goldenberg</a>
+      <a href="https://pudding.cool/author/russell-goldenberg">Russell
+        Goldenberg</a>
     </p>
   </div>
 
   <p style="margin-top: 2rem;">Arrow Key right.</p>
-  <!-- <Slider /> -->
 </section>
 
 <style>
   section {
     margin: 0 auto;
     max-width: 50em;
-    margin-top: 6rem;
+  }
+  .wordmark {
+    max-width: 10em;
+    margin: 1em auto;
   }
   h1 {
-    font-size: 5em;
+    font-size: 7vw;
     font-weight: var(--bold);
     line-height: 1;
   }
-  div {
+  .byline {
     margin-top: 1em;
     display: flex;
     /* justify-content: space-between; */
@@ -38,8 +43,5 @@
   p {
     margin: 0;
     line-height: 1;
-  }
-  time {
-    /* text-align: right; */
   }
 </style>
