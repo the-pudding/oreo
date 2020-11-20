@@ -63,7 +63,7 @@
     on:slideChange="{onSlideChange}"
     on:swiper="{createSwiper}">
     <SwiperSlide>
-      <Intro hed="{copy.hed}" />
+      <Intro hed="{copy.hed}" intro="{copy.intro}" />
     </SwiperSlide>
 
     {#each copy.levels as level}

@@ -1,6 +1,8 @@
 <script>
   import wordmark from "../svg/wordmark.svg";
+  import Icon from "./helpers/Icon.svelte";
   export let hed;
+  export let intro;
 </script>
 
 <section id="intro">
@@ -9,6 +11,7 @@
   </div>
 
   <h1>{hed}</h1>
+
   <div class="byline">
     <time>December 2020</time>
     &nbsp;|&nbsp;
@@ -18,30 +21,48 @@
     </p>
   </div>
 
+  <h3>{intro}</h3>
+
   <p style="margin-top: 2rem;">Arrow Key right.</p>
+  <button><Icon name="triangle" direction="e" /></button>
 </section>
 
 <style>
   section {
     margin: 0 auto;
     max-width: 50em;
+    padding: 1rem;
   }
+
   .wordmark {
     max-width: 10em;
     margin: 1em auto;
   }
+
   h1 {
-    font-size: 7vw;
     font-weight: var(--bold);
     line-height: 1;
+    font-size: 4vh;
   }
-  .byline {
+
+  h3 {
     margin-top: 1em;
-    display: flex;
-    /* justify-content: space-between; */
+    font-size: 8vh;
   }
-  p {
+
+  .byline {
+    display: flex;
+    font-size: 2vh;
+  }
+
+  .byline p {
     margin: 0;
     line-height: 1;
+  }
+
+  button {
+    font-size: 2em;
+    background: none;
+    color: var(--fg);
   }
 </style>
