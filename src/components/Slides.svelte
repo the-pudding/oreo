@@ -62,6 +62,8 @@
   .slide-content {
     padding-left: 1rem;
     padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .intro {
@@ -102,5 +104,9 @@
     background: none;
     color: var(--fg);
     font-size: 2em;
+  }
+
+  .reverse {
+    flex-direction: column-reverse;
   }
 </style>

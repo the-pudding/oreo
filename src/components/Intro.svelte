@@ -42,11 +42,11 @@
   h1 {
     font-weight: var(--bold);
     line-height: 1;
-    font-size: 4vh;
+    font-size: 1.5em;
   }
 
   h3 {
-    font-size: 8vh;
+    font-size: 6vh;
   }
 
   .byline {

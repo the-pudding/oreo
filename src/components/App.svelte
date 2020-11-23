@@ -12,7 +12,6 @@
 
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
-  import popularData from "../data/xd-four-letter-popular-1993.csv";
 
   SwiperCore.use([Keyboard]);
 
