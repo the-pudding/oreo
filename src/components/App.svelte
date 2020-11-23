@@ -6,9 +6,11 @@
 
   import Meta from "./Meta.svelte";
   import Header from "./Header.svelte";
+  import Nav from "./Nav.svelte";
   import Intro from "./Intro.svelte";
   import Slides from "./Slides.svelte";
 
+  import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
   import popularData from "../data/xd-four-letter-popular-1993.csv";
 
@@ -23,14 +25,31 @@
     keyboard: true,
   };
 
-  let swiperInstance;
+  // first is horizontal, remaining are vertical
+  let swiperInstances = [];
   let mounted = true;
 
-  const createSwiper = (e) => {
-    swiperInstance = e.detail[0];
+  const createSwiper = (e, index) => {
+    swiperInstances[index] = e.detail[0];
   };
 
-  const onSlideChange = () => {};
+  const onHorizontalChange = ({ detail }) => {
+    const [s] = detail;
+    const { activeIndex } = s[0];
+    if (activeIndex > 0) {
+      const si = swiperInstances[activeIndex];
+      $visibleIndex = si.activeIndex;
+    } else $visibleIndex = 0;
+  };
+
+  const onVerticalChange = ({ detail }) => {
+    const [s] = detail;
+    $visibleIndex = s[0].activeIndex;
+  };
+
+  const onJump = ({ detail }) => {
+    swiperInstances[0].slideTo(detail);
+  };
 
   const cleanData = (data) => {
     return data.map((d) => ({
@@ -57,18 +76,23 @@
 
 <Header />
 
+<Nav levels="{copy.levels}" on:jump="{onJump}" />
+
 {#if mounted}
   <Swiper
     {...horizontalOptions}
-    on:slideChange="{onSlideChange}"
-    on:swiper="{createSwiper}">
+    on:slideChange="{onHorizontalChange}"
+    on:swiper="{(e) => createSwiper(e, 0)}">
     <SwiperSlide>
       <Intro hed="{copy.hed}" intro="{copy.intro}" />
     </SwiperSlide>
 
-    {#each copy.levels as level}
+    {#each copy.levels as level, i}
       <SwiperSlide>
-        <Swiper {...verticalOptions}>
+        <Swiper
+          on:slideChange="{onVerticalChange}"
+          on:swiper="{(e) => createSwiper(e, i + 1)}"
+          {...verticalOptions}>
           <Slides {...level} />
         </Swiper>
       </SwiperSlide>

@@ -60,7 +60,8 @@
 
 <style>
   .slide-content {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .intro {

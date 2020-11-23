@@ -46,13 +46,13 @@
   }
 
   h3 {
-    margin-top: 1em;
     font-size: 8vh;
   }
 
   .byline {
     display: flex;
     font-size: 2vh;
+    align-items: center;
   }
 
   .byline p {
