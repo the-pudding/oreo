@@ -8,7 +8,7 @@
 </script>
 
 <div class="chart">
-  {#each data as { letter, freq, percent }}
+  {#each data as { letter, freq, percent } (letter)}
     <div
       class="item item--{letter}"
       class:highlight="{highlight.includes(letter)}">
@@ -29,8 +29,8 @@
   }
 
   .item {
-    width: 1.25em;
-    border: 1px solid white;
+    width: 3.5vw;
+    border: 1px solid var(--bg);
     text-align: center;
     display: flex;
     flex-direction: column-reverse;
@@ -38,7 +38,7 @@
 
   .bar {
     display: block;
-    background: var(--gray-light);
+    background: var(--default);
     position: relative;
   }
 
@@ -46,8 +46,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(0, -1.125em);
+    transform: translate(0, -1.25em);
     opacity: 0;
+    font-size: 0.8em;
   }
 
   .highlight.item--R .percent {
@@ -55,11 +56,15 @@
   }
 
   .highlight .bar {
-    background: pink;
+    background: var(--primary);
   }
 
   .highlight .percent {
     opacity: 1;
+  }
+
+  .highlight .letter {
+    font-weight: var(--bold);
   }
 
   .item:hover .percent {

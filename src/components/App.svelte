@@ -1,6 +1,5 @@
 <script>
   import { onMount } from "svelte";
-  import { csv } from "d3-fetch";
   import { Swiper, SwiperSlide } from "swiper/svelte";
   import SwiperCore, { Keyboard } from "swiper";
 
@@ -50,24 +49,8 @@
     swiperInstances[0].slideTo(detail);
   };
 
-  const cleanData = (data) => {
-    return data.map((d) => ({
-      ...d,
-      count: +d.count,
-      percent: +d.percent,
-      score: +d.score,
-    }));
-  };
-
   onMount(() => {
     mounted = true;
-
-    csv("assets/data/xd-four-letter-score-1993.csv")
-      .then(cleanData)
-      .then((result) => {})
-      .catch((err) => {
-        console.log(err);
-      });
   });
 </script>
 

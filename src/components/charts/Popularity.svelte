@@ -49,7 +49,7 @@
   span {
     display: inline-block;
     height: 100%;
-    background-color: pink;
+    background-color: var(--primary);
     padding-right: 0.5em;
   }
 </style>

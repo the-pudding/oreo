@@ -1,7 +1,9 @@
 <script>
   import { SwiperSlide } from "swiper/svelte";
+  import Oreo from "./Oreo.svelte";
   import Chart from "./Chart.svelte";
   import Special from "./Special.svelte";
+  import Image from "./Image.svelte";
   import Icon from "./helpers/Icon.svelte";
 
   export let version;
@@ -15,7 +17,7 @@
   <div class="slide-content intro">
     <p class="level">Level {level}</p>
     <p class="version"><strong>{version}</strong></p>
-    <img src="https://placehold.it/240x240.png" alt="placeholder" />
+    <Oreo version="{version}" />
     <p class="duration">~ {duration}</p>
     <p class="text">{text}</p>
     <button>
@@ -24,7 +26,7 @@
   </div>
 </SwiperSlide>
 
-{#each slides as { text, className, chart, special }}
+{#each slides as { text, className, chart, special, image }}
   <SwiperSlide>
     <div class="slide-content {className || ''}">
       {#if typeof text === 'string'}
@@ -44,15 +46,19 @@
       {/if}
 
       {#if chart}
-        <figure>
+        <div class="chart">
           <Chart name="{chart}" />
-        </figure>
+        </div>
       {/if}
 
       {#if special}
         <div class="special">
           <Special name="{special}" />
         </div>
+      {/if}
+
+      {#if image}
+        <Image name="{image}" />
       {/if}
     </div>
   </SwiperSlide>
@@ -64,6 +70,10 @@
     padding-right: 1rem;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    max-width: 40em;
+    margin: 0 auto;
+    overflow: hidden;
   }
 
   .intro {
@@ -91,7 +101,7 @@
   .duration {
   }
 
-  img {
+  .oreo {
     width: 16em;
     height: 16em;
   }
@@ -108,5 +118,11 @@
 
   .reverse {
     flex-direction: column-reverse;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .slide-content {
+      justify-content: center;
+    }
   }
 </style>
