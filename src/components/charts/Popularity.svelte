@@ -49,7 +49,8 @@
   span {
     display: inline-block;
     height: 100%;
-    background-color: var(--primary);
+    background-color: var(--default);
     padding-right: 0.5em;
+    color: var(--white);
   }
 </style>

@@ -33,29 +33,45 @@
 	--gray-light: #c9c9c9;
 	--off-white: #f0f0f0;
 	--white: #fff;
-	--purple: #a239ca;
+	
+	/* --purple: #a239ca;
 	--purple-light: #dfbaed;
-	/* --blue: #4717f6; */
 	--blue: #5b30f8;
 	--blue-light: #baa9f9;
-	/* --green: #34a29e; */
 	--green: #2a837e;
-	--green-light: #8fdcd9;
-	--red: #ff533d;
-	--yellow: #e5e338;
+	--green-light: #8fdcd9; */
+
+	/* --red: #ff533d; */
+	/* --yellow: #e5e338; */
+	
 	--brown: #272425;
 
-	/* --blue: #0258C9; */
-	/* --blue-light: #bddcee; */
-	/* --pink: #ffc9db; */
+	--pink: #ff9de6;
+	--pinkHS: 315, 100%;
+	--blue: #a5d8f3;
+	--blueHS: 201, 76%;
+	--yellow: #e8e500;
+	--yellowHS: 59, 100%; 
+	--purple: #3d2a7e;
 	
-	--fg: var(--white);
-	--bg: var(--off-black);
-	--primary: var(--white);
-	--secondary: var(--off-white);
+	--bg1: var(--yellow);
+	--bg2: var(--pink);
+	--bg3: var(--blue);
+	--fg1: hsl(var(--yellowHS), 14%);
+	--fg2: hsl(var(--pinkHS), 18%);
+	--fg3: hsl(var(--blueHS), 20%);
+	--dg1: hsl(var(--yellowHS), 26%);
+	--dg2: hsl(var(--pinkHS), 38%);
+	--dg3: hsl(var(--blueHS), 39%);
+
+	/* --fg1: var(--purple); */
+	/* --fg2: var(--purple);
+	--fg3: var(--purple); */
 	
-	
-	
+	--fg: var(--purple);
+	--bg: var(--white);
+	--primary: var(--purple);
+	--secondary: var(--purple);
 
 	/* water.css */
 
@@ -65,9 +81,9 @@
   --background-alt: var(--off-white);
   --selection: var(--gray);
   --text-main: var(--fg);
-  --links: var(--white);
-  --focus: var(--green);
-  --border: var(--gray-light);
+  --links: var(--fg);
+  --focus: var(--fg);
+  --border: var(--bg);
   --animation-duration: 0.1s;
   --button-hover: var(--gray-light);
   --scrollbar-thumb: color-mod(var(--button-hover) lightness(-3%));
@@ -98,7 +114,7 @@
 
 /* pudding */
 .wordmark svg path {
-	fill: currentColor;
+	fill: var(--fg);
 }
 
 /* story */
@@ -110,6 +126,10 @@ body {
 	font-weight: var(--normal);
 }
 
+mark {
+	padding: 0 0.25em;
+}
+
 main {
 	height: 100vh;
 }
@@ -119,31 +139,42 @@ main {
 	height: 100%;
 }
 
+.swiper-container-horizontal .swiper-slide:nth-of-type(1) {
+	/* background-color: var(--fg);
+	color: var(--bg); */
+}
+
 .swiper-container-horizontal .swiper-slide:nth-of-type(2) .swiper-slide {
-	--fg: var(--white);
-	--bg: var(--purple);
-	--primary: var(--white);
-	--secondary: var(--off-white);
-	--default: var(--purple-light);
-	background-color: var(--purple);
+	--fg: var(--fg1);
+	--bg: var(--bg1);
+	--default: var(--dg1);
+	background-color: var(--bg1);
+	color: var(--fg1);
+	--highlight: var(--bg3);
+	--border: var(--dg1);
+	--background-alt: var(--bg1);
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(3) .swiper-slide {
-	--fg: var(--white);
-	--bg: var(--blue);
-	--primary: var(--white);
-	--secondary: var(--off-white);
-	--default: var(--blue-light);
-	background-color: var(--blue);
+	--fg: var(--fg2);
+	--bg: var(--bg2);
+	--default: var(--dg2);
+	background-color: var(--bg2);
+	color: var(--fg2);
+	--highlight: var(--bg1);
+	--border: var(--dg2);
+	--background-alt: var(--bg2);
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(4) .swiper-slide {
-	--fg: var(--white);
-	--bg: var(--green);
-	--primary: var(--white);
-	--secondary: var(--off-white);
-	--default: var(--green-light);
-	background-color: var(--green);
+	--fg: var(--fg3);
+	--bg: var(--bg3);
+	--default: var(--dg3);
+	background-color: var(--bg3);
+	color: var(--fg3);
+	--highlight: var(--bg1);
+	--border: var(--dg3);
+	--background-alt: var(--bg3);
 }
 
 .swiper-container-vertical .slide-content:nth-of-type(n + 1) {

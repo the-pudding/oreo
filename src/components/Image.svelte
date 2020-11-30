@@ -25,6 +25,12 @@
 </figure>
 
 <style>
-  figure {
+  img {
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0px var(--fg);
+  }
+  figcaption {
+    margin-top: 0.5em;
+    font-style: italic;
   }
 </style>

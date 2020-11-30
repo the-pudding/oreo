@@ -25,10 +25,7 @@
 </script>
 
 <div class="outer {cl}" style="height: {h}px;">
-  <div
-    style="width: {w}em; height: {h}px;"
-    class="oreo"
-    bind:offsetWidth="{cw}">
+  <div style="width: {w}em;" class="oreo" bind:offsetWidth="{cw}">
     <div class="top"></div>
     <div style="top: {tm}%" class="middle"></div>
     <div style="top: {ts}%" class="shadow"></div>
