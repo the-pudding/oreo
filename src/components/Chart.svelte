@@ -3,8 +3,11 @@
   import PopularityGrid from "./charts/PopularityGrid.svelte";
   import Frequency from "./charts/Frequency.svelte";
   import Clues from "./charts/Clues.svelte";
+  import CluesType from "./charts/CluesType.svelte";
   import Time from "./charts/Time.svelte";
   import Scatter from "./charts/Scatter.svelte";
+  import Possible from "./charts/Possible.svelte";
+  import First from "./charts/First.svelte";
   export let name;
 </script>
 
@@ -24,10 +27,22 @@
   <Clues />
 {/if}
 
+{#if name === 'cluestype'}
+  <CluesType />
+{/if}
+
 {#if name === 'time'}
   <Time />
 {/if}
 
 {#if name === 'scatter'}
   <Scatter />
+{/if}
+
+{#if name === 'possible'}
+  <Possible />
+{/if}
+
+{#if name === 'first'}
+  <First />
 {/if}

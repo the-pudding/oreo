@@ -29,10 +29,8 @@
     .domain(domainY)
     .range([height - pad * 2, pad * 2]);
 
-  $: axisX = axisBottom(scaleX)();
-  $: axisY = axisLeft(scaleY)();
-
-  $: console.log(axisY);
+  $: axisX = axisBottom(scaleX);
+  $: axisY = axisLeft(scaleY);
 
   $: if (ctx && data) {
     ctx.clearRect(0, 0, width, height);

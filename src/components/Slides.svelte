@@ -71,9 +71,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-width: 40em;
     margin: 0 auto;
     overflow: hidden;
+  }
+
+  .slide-content p {
+    margin: 0 auto;
+    max-width: 40em;
   }
 
   .intro {

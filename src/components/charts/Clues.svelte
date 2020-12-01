@@ -1,7 +1,6 @@
 <script>
   import { onMount } from "svelte";
   import { csv } from "d3-fetch";
-  import { scaleLinear } from "d3-scale";
   import { format } from "d3-format";
   import raw from "../../data/xd-oreo-clue-common-words-1993.csv";
 

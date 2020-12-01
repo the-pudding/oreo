@@ -18,7 +18,7 @@
       <tr class:highlight="{answer === 'OREO'}">
         <td>{answer}</td>
         <td>{format(',')(count)}</td>
-        <td><span style="width: {scale(+percent)}%;">{percent}</span></td>
+        <td><span style="width: {scale(+percent)}%;">{percent}%</span></td>
       </tr>
     {/each}
   </tbody>
@@ -50,7 +50,9 @@
     display: inline-block;
     height: 100%;
     background-color: var(--default);
+    padding: 0.25em;
     padding-right: 0.5em;
+    line-height: 1;
     color: var(--white);
   }
 </style>

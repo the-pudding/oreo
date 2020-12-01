@@ -1,9 +1,13 @@
 <script>
   import { format } from "d3-format";
   import { scaleLinear } from "d3-scale";
+  import { group } from "d3-array";
   import data from "../../data/xd-four-letter-popular-1993.csv";
-  $: count = 40;
+
+  $: count = 100;
   $: sliced = data.slice(0, count);
+  $: grouped = group(sliced, (d) => Math.floor(count / 1000));
+  $: console.log(grouped);
   $: domain = [+sliced[count - 1].count, +sliced[0].count];
   // $: domain = [0, +sliced[0].count];
   $: scale = scaleLinear().domain(domain).range([0, 100]);
@@ -28,12 +32,13 @@
 
   .item {
     position: relative;
-    padding: 1em 0;
-    width: 12.5%;
-    outline: 1px solid var(--default);
+    padding: 1em;
+    margin: 1px;
+    border: 1px solid var(--default);
   }
 
   span {
+    width: 3em;
     display: block;
     text-align: center;
     color: var(--fg);
@@ -51,7 +56,7 @@
   }
 
   .highlight {
-    outline: 1px solid var(--fg);
+    outline: 2px solid var(--fg);
     z-index: var(--z-top);
   }
 
