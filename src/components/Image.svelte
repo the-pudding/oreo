@@ -25,12 +25,18 @@
 </figure>
 
 <style>
+  figure {
+    margin: 0 auto;
+    max-width: 27em;
+    padding: 1em;
+  }
   img {
     border-radius: 4px;
-    box-shadow: 0 0 4px 0px var(--fg);
+    box-shadow: 0 0 8px 0px var(--fg);
   }
   figcaption {
-    margin-top: 0.5em;
+    margin-top: 1em;
     font-style: italic;
+    font-size: 0.75em;
   }
 </style>

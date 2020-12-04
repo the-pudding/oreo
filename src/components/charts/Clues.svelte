@@ -24,7 +24,7 @@
 
   $: examples = clues
     .filter((d) => d.clue.toLowerCase().includes(active))
-    .slice(0, 20)
+    .slice(0, 10)
     .map((d) => ({
       ...d,
       marked: addMark(d.clue),
@@ -50,7 +50,7 @@
 
 <div class="outer">
   <div class="left">
-    <h3>Word Count</h3>
+    <h3>Common Words</h3>
     <ul class="words">
       {#each words as { word, count }}
         <li class:active="{active === word}">
@@ -64,11 +64,12 @@
   </div>
 
   <div class="right">
-    <h3>Examples</h3>
+    <h3>Top 10 Examples (times used)</h3>
     <ul class="clues">
       {#each examples as { count, marked } (marked)}
         <li>
-          {@html marked}
+          <span class="clue">{@html marked}</span>
+          <span class="count">({format(',')(count)})</span>
         </li>
       {/each}
     </ul>
@@ -81,8 +82,15 @@
     justify-content: center;
   }
 
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: var(--bold);
+  }
+
   ul {
-    margin: 0 1em;
+    margin: 0 0.5em;
     list-style-type: none;
   }
 
@@ -91,11 +99,21 @@
   }
 
   .words {
-    width: 15em;
+    display: flex;
+    flex-wrap: wrap;
+    width: 16.5em;
+    justify-content: space-between;
   }
 
   .words li {
-    margin-bottom: 0.5em;
+    padding: 0.5em;
+  }
+
+  .words button {
+    display: flex;
+    width: 7.25em;
+    justify-content: space-between;
+    align-items: baseline;
   }
 
   .words span {
@@ -104,19 +122,27 @@
 
   .word {
     margin-right: 0.5em;
-    width: 5em;
-    text-align: left;
+    font-weight: var(--bold);
   }
 
-  .count {
-    width: 3em;
+  .words .count {
+    display: inline-block;
+    font-size: 0.75em;
   }
 
   .clues {
-    width: 15em;
+    width: 16.5em;
   }
 
   .clues li {
-    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+    /* display: flex; */
+    /* align-items: baseline; */
+  }
+
+  .clues .count {
+    margin-left: 0.5em;
+    opacity: 0.75;
+    font-size: 0.75em;
   }
 </style>

@@ -1,6 +1,7 @@
 <script>
   import wordmark from "../svg/wordmark.svg";
   import Icon from "./helpers/Icon.svelte";
+  import ArrowKeys from "./ArrowKeys.svelte";
   export let hed;
   export let intro;
 </script>
@@ -23,8 +24,8 @@
 
   <h3>{intro}</h3>
 
-  <p style="margin-top: 2rem;">Arrow Key right.</p>
-  <button><Icon name="triangle" direction="e" /></button>
+  <p class="instructions">Use arrow keys or tap to navigate</p>
+  <ArrowKeys active="right" />
 </section>
 
 <style>
@@ -60,9 +61,8 @@
     line-height: 1;
   }
 
-  button {
-    font-size: 2em;
-    background: none;
-    color: var(--fg);
+  .instructions {
+    text-transform: uppercase;
+    margin-top: 2em;
   }
 </style>

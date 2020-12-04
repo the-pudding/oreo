@@ -8,19 +8,28 @@
   import Nav from "./Nav.svelte";
   import Intro from "./Intro.svelte";
   import Slides from "./Slides.svelte";
+  import Tap from "./helpers/Tap.svelte";
 
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
 
   SwiperCore.use([Keyboard]);
 
-  const horizontalOptions = {
-    direction: "horizontal",
+  const options = {
     keyboard: true,
+    allowTouchMove: false,
+    // shortSwipes: false,
+    // longSwipesRatio: 0.1,
+    // simulateTouch: false,
+  };
+
+  const horizontalOptions = {
+    ...options,
+    direction: "horizontal",
   };
   const verticalOptions = {
+    ...options,
     direction: "vertical",
-    keyboard: true,
   };
 
   // first is horizontal, remaining are vertical
@@ -49,13 +58,17 @@
     swiperInstances[0].slideTo(detail);
   };
 
+  const onTap = ({ detail }) => {
+    console.log(detail);
+  };
+
   onMount(() => {
     mounted = true;
     // TODO remove
-    setTimeout(() => {
-      swiperInstances[0].slideTo(3);
-      swiperInstances[3].slideTo(7);
-    }, 100);
+    // setTimeout(() => {
+    //   swiperInstances[0].slideTo(3);
+    //   swiperInstances[3].slideTo(7);
+    // }, 100);
   });
 </script>
 
@@ -64,6 +77,7 @@
 <Header />
 
 <Nav levels="{copy.levels}" on:jump="{onJump}" />
+<Tap debug="{false}" on:tap="{onTap}" />
 
 {#if mounted}
   <Swiper

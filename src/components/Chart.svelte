@@ -8,6 +8,7 @@
   import Scatter from "./charts/Scatter.svelte";
   import Possible from "./charts/Possible.svelte";
   import First from "./charts/First.svelte";
+  import Puzzle from "./charts/Puzzle.svelte";
   export let name;
 </script>
 
@@ -45,4 +46,8 @@
 
 {#if name === 'first'}
   <First />
+{/if}
+
+{#if name === 'puzzle'}
+  <Puzzle />
 {/if}

@@ -8,6 +8,6 @@
     font-size: 8vh;
     text-align: center;
     max-width: 40rem;
-    margin: 0 auto;
+    margin: 1em auto;
   }
 </style>

@@ -46,13 +46,16 @@
 	
 	--brown: #272425;
 
+	--yellow: #e8e500;
+	--yellowLight: #fffc4d;
+	--yellowHS: 59, 100%; 
 	--pink: #ff9de6;
+	--pinkLight: #ffb8ed;
 	--pinkHS: 315, 100%;
 	--blue: #a5d8f3;
 	--blueHS: 201, 76%;
-	--yellow: #e8e500;
-	--yellowHS: 59, 100%; 
-	--purple: #3d2a7e;
+	--blueLight: #bce1f6;
+	--purple: #25194d;
 	
 	--bg1: var(--yellow);
 	--bg2: var(--pink);
@@ -85,7 +88,7 @@
   --focus: var(--fg);
   --border: var(--bg);
   --animation-duration: 0.1s;
-  --button-hover: var(--gray-light);
+  --button-hover: var(--white);
   --scrollbar-thumb: color-mod(var(--button-hover) lightness(-3%));
   --scrollbar-thumb-hover: color-mod(var(--button-hover) lightness(-10%));
 	--form-placeholder: var(--gray-dark);
@@ -140,8 +143,8 @@ main {
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(1) {
-	/* background-color: var(--fg);
-	color: var(--bg); */
+	background-color: var(--bg3);
+	color: var(--fg3);
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(2) .swiper-slide {

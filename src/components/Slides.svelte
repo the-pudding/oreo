@@ -4,7 +4,7 @@
   import Chart from "./Chart.svelte";
   import Special from "./Special.svelte";
   import Image from "./Image.svelte";
-  import Icon from "./helpers/Icon.svelte";
+  import ArrowKeys from "./ArrowKeys.svelte";
 
   export let version;
   export let level;
@@ -20,9 +20,7 @@
     <Oreo version="{version}" />
     <p class="duration">~ {duration}</p>
     <p class="text">{text}</p>
-    <button>
-      <Icon name="triangle" direction="s" />
-    </button>
+    <ArrowKeys active="down" />
   </div>
 </SwiperSlide>
 
@@ -66,18 +64,19 @@
 
 <style>
   .slide-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
     display: flex;
     flex-direction: column;
     height: 100%;
     margin: 0 auto;
     overflow: hidden;
+    font-size: 18px;
+    justify-content: center;
   }
 
   .slide-content p {
-    margin: 0 auto;
-    max-width: 40em;
+    margin: 1em auto;
+    max-width: 35em;
+    padding: 0 1em;
   }
 
   .intro {
@@ -86,15 +85,17 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    font-size: 3vh;
+    font-size: 1.5em;
   }
 
   .intro p {
-    margin: 0.5em 0;
+    margin: 0.5rem 0;
   }
 
   .level {
-    opacity: 0.5;
+    opacity: 0.75;
+    text-transform: uppercase;
+    font-size: 0.75em;
   }
 
   .version {
@@ -103,6 +104,7 @@
   }
 
   .duration {
+    font-size: 0.75em;
   }
 
   .oreo {
@@ -114,19 +116,13 @@
     font-size: 1.25em;
   }
 
-  button {
-    background: none;
-    color: var(--fg);
-    font-size: 2em;
-  }
-
   .reverse {
     flex-direction: column-reverse;
   }
 
   @media only screen and (min-width: 640px) {
     .slide-content {
-      justify-content: center;
+      font-size: 21px;
     }
   }
 </style>

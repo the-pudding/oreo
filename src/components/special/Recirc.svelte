@@ -18,15 +18,23 @@
   })();
 </script>
 
-{#await fetchData then data}
-  {#each data as { hed, url, image }}
-    <div class="story">
-      <p><a href="{url}">{hed}</a></p>
-    </div>
-  {/each}
-{/await}
+<div class="recirc">
+  {#await fetchData then data}
+    {#each data as { hed, url, image }}
+      <div class="story">
+        <p><a href="{url}">{hed}</a></p>
+      </div>
+    {/each}
+  {/await}
+</div>
 
 <style>
+  .recirc {
+    max-width: 35em;
+    margin: 0 auto;
+    padding: 0 1em;
+  }
+
   p {
     display: flex;
     align-items: center;
