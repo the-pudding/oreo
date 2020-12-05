@@ -23,7 +23,7 @@
   }
 
   .cookie {
-    stroke: var(--primary);
+    stroke: var(--fg);
     stroke-width: 4px;
   }
 
