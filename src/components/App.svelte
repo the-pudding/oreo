@@ -23,16 +23,16 @@
     // simulateTouch: false,
   };
 
-  const horizontalOptions = {
-    ...options,
-    direction: "horizontal",
-  };
-  const verticalOptions = {
+  const levelOptions = {
     ...options,
     direction: "vertical",
   };
+  const storyOptions = {
+    ...options,
+    direction: "horizontal",
+  };
 
-  // first is horizontal, remaining are vertical
+  // first is vertical, remaining are horizontal
   let swiperInstances = [];
   let mounted = true;
 
@@ -40,7 +40,7 @@
     swiperInstances[index] = e.detail[0];
   };
 
-  const onHorizontalChange = ({ detail }) => {
+  const onLevelChange = ({ detail }) => {
     const [s] = detail;
     const { activeIndex } = s[0];
     if (activeIndex > 0) {
@@ -49,7 +49,7 @@
     } else $visibleIndex = 0;
   };
 
-  const onVerticalChange = ({ detail }) => {
+  const onStoryChange = ({ detail }) => {
     const [s] = detail;
     $visibleIndex = s[0].activeIndex;
   };
@@ -65,10 +65,10 @@
   onMount(() => {
     mounted = true;
     // TODO remove
-    // setTimeout(() => {
-    //   swiperInstances[0].slideTo(3);
-    //   swiperInstances[3].slideTo(7);
-    // }, 100);
+    setTimeout(() => {
+      swiperInstances[0].slideTo(3);
+      swiperInstances[3].slideTo(2);
+    }, 100);
   });
 </script>
 
@@ -81,8 +81,8 @@
 
 {#if mounted}
   <Swiper
-    {...horizontalOptions}
-    on:slideChange="{onHorizontalChange}"
+    {...levelOptions}
+    on:slideChange="{onLevelChange}"
     on:swiper="{(e) => createSwiper(e, 0)}">
     <SwiperSlide>
       <Intro hed="{copy.hed}" intro="{copy.intro}" />
@@ -91,9 +91,9 @@
     {#each copy.levels as level, i}
       <SwiperSlide>
         <Swiper
-          on:slideChange="{onVerticalChange}"
+          on:slideChange="{onStoryChange}"
           on:swiper="{(e) => createSwiper(e, i + 1)}"
-          {...verticalOptions}>
+          {...storyOptions}>
           <Slides {...level} />
         </Swiper>
       </SwiperSlide>

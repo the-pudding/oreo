@@ -7,62 +7,98 @@
 </script>
 
 <section id="intro">
-  <div class="wordmark">
-    <a href="https://pudding.cool">{@html wordmark}</a>
+  <div class="top">
+    <h1>{hed}</h1>
+
+    <div class="byline">
+      <div class="wordmark">
+        <a href="https://pudding.cool">{@html wordmark}</a>
+      </div>
+
+      <p>
+        <a href="https://pudding.cool/author/russell-goldenberg">Russell
+          Goldenberg</a>
+      </p>
+
+      <time>December 2020</time>
+    </div>
   </div>
 
-  <h1>{hed}</h1>
+  <h3><mark>{intro}</mark></h3>
 
-  <div class="byline">
-    <time>December 2020</time>
-    &nbsp;|&nbsp;
-    <p>
-      <a href="https://pudding.cool/author/russell-goldenberg">Russell
-        Goldenberg</a>
-    </p>
+  <div class="instructions">
+    <p>Use arrow keys or tap to navigate</p>
+    <div class="keys">
+      <ArrowKeys active="down" />
+    </div>
   </div>
-
-  <h3>{intro}</h3>
-
-  <p class="instructions">Use arrow keys or tap to navigate</p>
-  <ArrowKeys active="right" />
 </section>
 
 <style>
   section {
     margin: 0 auto;
-    max-width: 50em;
+    max-width: 70em;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: var(--nav-height);
   }
 
   .wordmark {
-    max-width: 10em;
-    margin: 1em auto;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   h1 {
     font-weight: var(--bold);
     line-height: 1;
-    font-size: 1.5em;
+    font-size: 1.25em;
+    max-width: 12em;
+    padding: 1rem;
+    margin: 0;
   }
 
   h3 {
-    font-size: 6vh;
+    font-size: 4em;
+    text-align: center;
+  }
+
+  mark {
+    box-decoration-break: clone;
+    padding: 0.2em;
   }
 
   .byline {
     display: flex;
-    font-size: 2vh;
-    align-items: center;
+    flex-direction: column;
+    font-size: 1em;
+    align-items: flex-end;
+    padding: 0.5em 1em;
   }
 
   .byline p {
     margin: 0;
     line-height: 1;
+    margin-bottom: 0.5em;
   }
 
   .instructions {
     text-transform: uppercase;
     margin-top: 2em;
+    text-align: center;
+  }
+  .keys {
+    display: flex;
+    justify-content: center;
   }
 </style>

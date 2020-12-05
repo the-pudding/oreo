@@ -5,6 +5,7 @@
   import Special from "./Special.svelte";
   import Image from "./Image.svelte";
   import ArrowKeys from "./ArrowKeys.svelte";
+  import Icon from "./helpers/Icon.svelte";
 
   export let version;
   export let level;
@@ -15,12 +16,28 @@
 
 <SwiperSlide>
   <div class="slide-content intro">
+    {#if +level > 1}
+      <p class="prev">
+        Level
+        {+level - 1}
+        <span>
+          <Icon name="arrow-up" /></span>
+      </p>
+    {/if}
     <p class="level">Level {level}</p>
     <p class="version"><strong>{version}</strong></p>
     <Oreo version="{version}" />
     <p class="duration">~ {duration}</p>
     <p class="text">{text}</p>
-    <ArrowKeys active="down" />
+    <ArrowKeys active="right" />
+    {#if +level < 3}
+      <p class="next">
+        Level
+        {+level + 1}
+        <span>
+          <Icon name="arrow-down" /></span>
+      </p>
+    {/if}
   </div>
 </SwiperSlide>
 
@@ -118,6 +135,39 @@
 
   .reverse {
     flex-direction: column-reverse;
+  }
+
+  p.prev,
+  p.next {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 0.5em 0.75em;
+    background-color: var(--fg);
+    line-height: 1;
+    margin: 0.1em;
+    border-radius: 4px;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    color: var(--off-white);
+    text-transform: uppercase;
+  }
+
+  .prev span,
+  .next span {
+    margin-left: 0.5em;
+    display: flex;
+    align-items: center;
+  }
+
+  .prev {
+    top: 1em;
+  }
+
+  .next {
+    bottom: 1em;
   }
 
   @media only screen and (min-width: 640px) {

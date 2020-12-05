@@ -82,7 +82,7 @@
 	--background-body: var(--bg);
   --background: var(--off-white);
   --background-alt: var(--off-white);
-  --selection: var(--gray);
+  --selection: var(--highlight);
   --text-main: var(--fg);
   --links: var(--fg);
   --focus: var(--fg);
@@ -142,42 +142,51 @@ main {
 	height: 100%;
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(1) {
+.swiper-container-vertical .swiper-slide:nth-of-type(1) {
 	background-color: var(--bg3);
 	color: var(--fg3);
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(2) .swiper-slide {
+.swiper-container-vertical .swiper-slide:nth-of-type(2) .swiper-slide {
 	--fg: var(--fg1);
 	--bg: var(--bg1);
 	--default: var(--dg1);
 	background-color: var(--bg1);
 	color: var(--fg1);
 	--highlight: var(--bg3);
-	--border: var(--dg1);
 	--background-alt: var(--bg1);
+	--text-main: var(--fg1);
+  --links: var(--fg1);
+  --focus: var(--fg1);
+  --border: var(--bg1);
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(3) .swiper-slide {
+.swiper-container-vertical .swiper-slide:nth-of-type(3) .swiper-slide {
 	--fg: var(--fg2);
 	--bg: var(--bg2);
 	--default: var(--dg2);
 	background-color: var(--bg2);
 	color: var(--fg2);
 	--highlight: var(--bg1);
-	--border: var(--dg2);
 	--background-alt: var(--bg2);
+	--text-main: var(--fg2);
+  --links: var(--fg2);
+  --focus: var(--fg2);
+  --border: var(--bg2);
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(4) .swiper-slide {
+.swiper-container-vertical .swiper-slide:nth-of-type(4) .swiper-slide {
 	--fg: var(--fg3);
 	--bg: var(--bg3);
 	--default: var(--dg3);
 	background-color: var(--bg3);
 	color: var(--fg3);
 	--highlight: var(--bg1);
-	--border: var(--dg3);
 	--background-alt: var(--bg3);
+	--text-main: var(--fg3);
+  --links: var(--fg3);
+  --focus: var(--fg3);
+  --border: var(--bg3);
 }
 
 .swiper-container-vertical .slide-content:nth-of-type(n + 1) {

@@ -24,25 +24,16 @@
   $: tb = 12 + v.t;
 </script>
 
-<div class="cookie">
-  <div class="outer {cl}" style="height: {h}px;">
-    <div style="width: {w}em;" class="oreo" bind:offsetWidth="{cw}">
-      <div class="top"></div>
-      <div style="top: {tm}%" class="middle"></div>
-      <div style="top: {ts}%" class="shadow"></div>
-      <div style="top: {tb}%" class="bottom"></div>
-    </div>
+<div class="outer {cl}" style="height: {h}px;">
+  <div style="width: {w}em;" class="oreo" bind:offsetWidth="{cw}">
+    <div class="top"></div>
+    <div style="top: {tm}%" class="middle"></div>
+    <div style="top: {ts}%" class="shadow"></div>
+    <div style="top: {tb}%" class="bottom"></div>
   </div>
 </div>
 
 <style>
-  .cookie {
-    height: 8em;
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-
   .outer {
     position: relative;
     width: 100%;

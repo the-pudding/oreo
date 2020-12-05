@@ -4,11 +4,7 @@
   import { format } from "d3-format";
   import raw from "../../data/xd-oreo-clue-common-words-1993.csv";
 
-  const min = 100;
-
-  const words = raw
-    .map((d) => ({ ...d, count: +d.count }))
-    .filter((d) => d.count >= min);
+  const words = raw.map((d) => ({ ...d, count: +d.count })).slice(0, 12);
 
   let clues = [];
   let active = words[0].word;

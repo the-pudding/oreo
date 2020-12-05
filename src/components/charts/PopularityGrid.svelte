@@ -4,7 +4,11 @@
   import { group } from "d3-array";
   import data from "../../data/xd-four-letter-popular-1993.csv";
 
-  $: count = 100;
+  const itemW = 105;
+  let w = itemW;
+
+  $: x = Math.floor(w / itemW);
+  $: count = x * 4;
   $: sliced = data.slice(0, count);
   $: grouped = group(sliced, (d) => Math.floor(count / 1000));
   $: console.log(grouped);
@@ -13,28 +17,35 @@
   $: scale = scaleLinear().domain(domain).range([0, 100]);
 </script>
 
-<div class="grid">
-  {#each sliced as { answer, count }, i}
-    <div class="item" class:highlight="{answer === 'OREO'}">
-      <span class="bg" style="opacity: {scale(+count)}%;"></span>
-      <span class="answer">{answer}</span>
-      <span class="count">{format(',')(count)}</span>
-      <span class="rank">{i + 1}</span>
-    </div>
-  {/each}
+<div class="outer">
+  <div class="grid" bind:clientWidth="{w}">
+    {#each sliced as { answer, count }, i}
+      <div class="item" class:highlight="{answer === 'OREO'}">
+        <span class="bg" style="opacity: {scale(+count)}%;"></span>
+        <span class="answer">{answer}</span>
+        <span class="count">{format(',')(count)}</span>
+        <span class="rank">{i + 1}</span>
+      </div>
+    {/each}
+  </div>
 </div>
 
 <style>
+  .outer {
+    padding: 1em;
+  }
+
   .grid {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .item {
     position: relative;
     padding: 1em;
+    box-shadow: 0 0 1px 0 var(--fg);
     margin: 1px;
-    border: 1px solid var(--default);
   }
 
   span {
@@ -56,7 +67,7 @@
   }
 
   .highlight {
-    outline: 2px solid var(--fg);
+    box-shadow: 0 0 0 4px var(--fg);
     z-index: var(--z-top);
   }
 
