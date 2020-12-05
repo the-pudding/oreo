@@ -1,15 +1,17 @@
 <script>
   import { getContext } from "svelte";
-  import { scaleLinear } from "d3-scale";
   import { line, curveCardinal } from "d3-shape";
 
   const { data, xGet, yGet, yScale, xScale } = getContext("LayerCake");
 
-  $: path = line().x($xGet).y($yGet).curve(curveCardinal.tension(0.5));
+  $: path = line().x($xGet).y($yGet).curve(curveCardinal.tension(0.75));
 </script>
 
 {#each $data as { name, values }}
-  <path class="{name}" d="{path(values)}"></path>
+  <g transform="translate(0, -1)">
+    <path class="{name} bg" d="{path(values)}"></path>
+    <path class="{name} fg" d="{path(values)}"></path>
+  </g>
 {/each}
 
 <style>
@@ -27,5 +29,14 @@
 
   .mountain {
     stroke: var(--default);
+  }
+
+  .mountain.bg {
+    display: none;
+  }
+
+  .bg {
+    stroke-width: 12px;
+    stroke: var(--highlight);
   }
 </style>

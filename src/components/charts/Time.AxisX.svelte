@@ -71,11 +71,13 @@
 
   line,
   .tick line {
-    stroke-dasharray: 2;
     stroke: var(--default);
+    stroke-dasharray: 2;
+    stroke-opacity: 0.33;
   }
 
   .tick text {
+    fill: var(--fg);
   }
 
   .baseline {

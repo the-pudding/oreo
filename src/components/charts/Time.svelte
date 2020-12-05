@@ -1,12 +1,11 @@
 <script>
   import { LayerCake, Svg } from "layercake";
   import { max, extent } from "d3-array";
+  import { format } from "d3-format";
   import Line from "./Time.Line.svelte";
   import AxisX from "./Time.AxisX.svelte";
   import AxisY from "./Time.AxisY.svelte";
   import raw from "../../data/xd-nyt-oreo-1950.csv";
-
-  let w;
 
   const clean = raw.map((d) => ({
     ...d,
@@ -31,7 +30,7 @@
   const yDomain = [0, max(flat, (d) => d.percent)];
 </script>
 
-<div class="chart" bind:clientWidth="{w}">
+<div class="chart">
   <LayerCake
     padding="{{ top: 10, right: 10, bottom: 20, left: 20 }}"
     x="{'year'}"
@@ -42,7 +41,9 @@
     data="{data}">
     <Svg>
       <AxisX />
-      <AxisY />
+      <AxisY
+        formatTick="{(d) => format('.2%')(d)}"
+        label="{' share of all clues'}" />
       <Line />
     </Svg>
   </LayerCake>
@@ -51,6 +52,22 @@
 <style>
   .chart {
     height: 50vh;
-    padding: 0 2rem;
+    padding: 0 4em;
+    max-width: 80em;
+    margin: 0 auto;
+  }
+
+  h3 {
+    max-width: 35em;
+    margin: 0 auto;
+  }
+
+  mark {
+    padding: 0.125em 0.25em;
+  }
+
+  mark.custom {
+    background: var(--default);
+    color: var(--white);
   }
 </style>

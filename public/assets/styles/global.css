@@ -133,6 +133,11 @@ mark {
 	padding: 0 0.25em;
 }
 
+mark.custom {
+	background: var(--default);
+	color: var(--white);
+}
+
 main {
 	height: 100vh;
 }
