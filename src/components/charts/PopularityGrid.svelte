@@ -4,16 +4,14 @@
   import { group } from "d3-array";
   import data from "../../data/xd-four-letter-popular-1993.csv";
 
-  const itemW = 105;
+  const itemW = 74;
+  const rows = 4;
   let w = itemW;
 
   $: x = Math.floor(w / itemW);
-  $: count = x * 4;
-  $: sliced = data.slice(0, count);
-  $: grouped = group(sliced, (d) => Math.floor(count / 1000));
-  $: console.log(grouped);
-  $: domain = [+sliced[count - 1].count, +sliced[0].count];
-  // $: domain = [0, +sliced[0].count];
+  $: c = x * rows;
+  $: sliced = data.slice(0, c);
+  $: domain = [+sliced[c - 1].count, +sliced[0].count];
   $: scale = scaleLinear().domain(domain).range([0, 100]);
 </script>
 
@@ -42,19 +40,25 @@
   }
 
   .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
-    padding: 1em;
     box-shadow: 0 0 1px 0 var(--fg);
     margin: 1px;
+    width: 72px;
+    height: 72px;
+    font-size: 18px;
+    border-radius: 4px;
   }
 
   span {
-    width: 3em;
     display: block;
     text-align: center;
     color: var(--fg);
     position: relative;
     line-height: 1;
+    width: 100%;
   }
 
   .bg {
@@ -73,6 +77,7 @@
 
   .answer {
     font-weight: var(--bold);
+    margin-top: 0.5em;
   }
 
   .count {
@@ -87,5 +92,6 @@
     line-height: 1;
     font-size: 0.5em;
     opacity: 0.75;
+    text-align: left;
   }
 </style>

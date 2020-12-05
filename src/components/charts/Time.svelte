@@ -1,83 +1,56 @@
 <script>
-  import { format } from "d3-format";
-  import { scaleLinear } from "d3-scale";
-  import { line, curveStepBefore } from "d3-shape";
-  import data from "../../data/xd-nyt-oreo-1950.csv";
+  import { LayerCake, Svg } from "layercake";
+  import { max, extent } from "d3-array";
+  import Line from "./Time.Line.svelte";
+  import AxisX from "./Time.AxisX.svelte";
+  import AxisY from "./Time.AxisY.svelte";
+  import raw from "../../data/xd-nyt-oreo-1950.csv";
 
-  const cleanData = data
-    .map((d) => ({
-      ...d,
-      year: +d.year,
-      four: +d.four,
-      cookie: +d.cookie,
-      mountain: +d.mountain,
-    }))
-    .map((d) => ({
-      ...d,
-      pctCookie: d.cookie / d.four,
-      pctMountain: d.mountain / d.four,
-    }));
+  let w;
 
-  const minYear = Math.min(...cleanData.map((d) => d.year));
-  const maxYear = Math.max(...cleanData.map((d) => d.year));
-  const domainX = [minYear, maxYear];
-  const maxCookie = Math.max(...cleanData.map((d) => d.pctCookie));
-  const maxMountain = Math.max(...cleanData.map((d) => d.pctMountain));
-  const domainY = [0, Math.max(maxCookie, maxMountain)];
+  const clean = raw.map((d) => ({
+    ...d,
+    year: +d.year,
+    four: +d.four,
+    cookie: +d.cookie,
+    mountain: +d.mountain,
+  }));
 
-  let width = 1;
-  let height = 1;
-  let pad = 4;
+  const data = ["mountain", "cookie"].map((prop) => ({
+    name: prop,
+    values: clean.map((d) => ({
+      year: d.year,
+      count: d[prop],
+      percent: d[prop] / d.four,
+    })),
+  }));
 
-  $: height = Math.floor(width / 2);
-  $: scaleX = scaleLinear()
-    .domain(domainX)
-    .range([0, width - pad * 2]);
-  $: scaleY = scaleLinear()
-    .domain(domainY)
-    .range([height - pad * 2, 0]);
-  // $: pathC =
-  //   "M" +
-  //   cleanData.map((d) => `${scaleX(d.year)},${scaleY(d.pctCookie)}`).join("L");
-  // $: pathM =
-  //   "M" +
-  //   cleanData
-  //     .map((d) => `${scaleX(d.year)},${scaleY(d.pctMountain)}`)
-  //     .join("L");
-  $: pathC = line()
-    .x((d) => scaleX(d.year))
-    .y((d) => scaleY(d.pctCookie))
-    .curve(curveStepBefore)(cleanData);
-  $: pathM = line()
-    .x((d) => scaleX(d.year))
-    .y((d) => scaleY(d.pctMountain))
-    .curve(curveStepBefore)(cleanData);
+  const flat = [].concat(...data.map((d) => d.values));
+
+  const xDomain = extent(flat, (d) => d.year);
+  const yDomain = [0, max(flat, (d) => d.percent)];
 </script>
 
-<div bind:offsetWidth="{width}">
-  <svg width="{width}" height="{height}">
-    <g transform="translate({pad}, {pad})">
-      <path class="mountain" d="{pathM}"></path>
-      <path class="cookie" d="{pathC}"></path>
-    </g>
-  </svg>
+<div class="chart" bind:clientWidth="{w}">
+  <LayerCake
+    padding="{{ top: 10, right: 10, bottom: 20, left: 20 }}"
+    x="{'year'}"
+    y="{'percent'}"
+    xDomain="{xDomain}"
+    yDomain="{yDomain}"
+    yPadding="{[10, 0]}"
+    data="{data}">
+    <Svg>
+      <AxisX />
+      <AxisY />
+      <Line />
+    </Svg>
+  </LayerCake>
 </div>
 
 <style>
-  svg {
-    display: block;
-  }
-
-  path {
-    fill: none;
-    stroke-width: 2px;
-  }
-
-  .cookie {
-    stroke: var(--primary);
-  }
-
-  .mountain {
-    stroke: var(--default);
+  .chart {
+    height: 50vh;
+    padding: 0 2rem;
   }
 </style>

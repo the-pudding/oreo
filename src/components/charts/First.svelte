@@ -9,7 +9,6 @@
   }));
 
   const years = mapToArray(group(data, (d) => d.year));
-  console.log(years);
 </script>
 
 <div class="items">

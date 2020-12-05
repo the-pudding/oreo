@@ -67,7 +67,7 @@
     // TODO remove
     setTimeout(() => {
       swiperInstances[0].slideTo(3);
-      swiperInstances[3].slideTo(2);
+      swiperInstances[3].slideTo(3);
     }, 100);
   });
 </script>
