@@ -3,10 +3,12 @@
   import { csv } from "d3-fetch";
   import { format } from "d3-format";
   import { scaleLinear } from "d3-scale";
+  import { extent } from "d3-array";
   import { distance } from "fastest-levenshtein";
   import raw from "../../data/xd-oreo-clue-common-words-1993.csv";
 
   const min = 100;
+  const scaleScore = scaleLinear().range([1, 0]);
 
   const words = raw
     .map((d) => ({ ...d, count: +d.count }))
@@ -60,6 +62,7 @@
       score: scaleLev(d.scoreLev) + scaleGram(d.scoreGram),
     }));
     rank.sort((a, b) => a.score - b.score);
+    scaleScore.domain(extent(rank.slice(0, 10), (d) => d.score));
     clues = rank;
     reveal = true;
   };
@@ -104,31 +107,111 @@
   $: top = clues.slice(0, 10);
 </script>
 
-<fieldset>
-  <label for="clue">How would you clue OREO?</label>
-  <input
-    bind:value="{guess}"
-    name="clue"
-    placeholder="Clue description"
-    maxlength="{maxLength}" />
-  <button on:click="{onSubmit}">Submit</button>
-</fieldset>
+<section>
+  <fieldset>
+    <label for="clue">How would <em>you</em> clue <strong>OREO</strong>?</label>
+    <input
+      bind:value="{guess}"
+      name="clue"
+      placeholder="Enter clue description..."
+      maxlength="{maxLength}" />
+    <button on:click="{onSubmit}">Submit</button>
+  </fieldset>
 
-{#if reveal}
-  {#each top as { clue }}
-    <p>{clue}</p>
-  {/each}
-{/if}
+  <div class="result" class:reveal>
+    <h3>The ten most similar clues (times used)</h3>
+    <ul>
+      {#each top as { clue, score, count }, i}
+        {#key `${clue - score - i}`}
+          <li>
+            <span class="bg" style="opacity: {scaleScore(score)};"></span>
+            <span class="clue">{i + 1}.
+              {clue}
+              <span class="count">({count})</span></span>
+          </li>
+        {/key}
+      {/each}
+    </ul>
+  </div>
+</section>
 
 <style>
+  section {
+    max-width: 20em;
+    margin: 0 auto;
+  }
+
   fieldset {
+    width: 100%;
     outline: none;
     border: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  label {
+    display: block;
+    width: 100%;
   }
 
   input {
+    flex-grow: 2;
+    font-size: 0.75em;
+  }
+
+  button {
+    margin-left: 1em;
+    font-weight: var(--bold);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    margin: 0.25em;
+    display: inline-block;
+    position: relative;
+    padding: 0 0.5em;
+    margin: 0;
+  }
+
+  span {
+    position: relative;
+  }
+
+  .bg {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background: var(--highlight);
+  }
+
+  .result {
+    margin-top: 2em;
+    opacity: 0;
+  }
+
+  .reveal {
+    opacity: 1;
+  }
+
+  h3 {
+    /* text-align: center; */
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: var(--bold);
+  }
+
+  .count {
+    margin-left: 0.5em;
+    opacity: 0.75;
+    font-size: 0.75em;
   }
 </style>

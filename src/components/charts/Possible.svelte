@@ -3,12 +3,6 @@
   import { scaleLinear } from "d3-scale";
   import { format } from "d3-format";
 
-  // const letters = [
-  //   ["S", "O", "L", "O"],
-  //   ["O", "V", "E", "R"],
-  //   ["D", "A", "T", "E"],
-  //   ["A", "L", "S", "O"],
-  // ];
   const letters = [
     ["S", "O", "D", "A"],
     ["O", "V", "A", "L"],
@@ -36,7 +30,7 @@
   $: query = letters[letters.length - 1]
     .map((d, i) => (flipped[i] ? d : "_"))
     .join("");
-  $: datum = data.find((d) => d.query === query) || {};
+  $: datum = data.find((d) => d.query === query);
   // $: heatmap = datum.heatmap.map((d) => (d === datum.possible ? 0 : d));
   // $: query,
   //   scale.domain([
@@ -63,16 +57,56 @@
   {/each}
 </div>
 
-<!-- query,possible_anwers,most_used,most_likely,oreo_share_pct,distributed_share_pct,other_likely,other_use,heatmap -->
+<!-- <table>
+  <thead>
+    <th>query</th>
+    <th>possible</th>
+    <th>share even</th>
+    <th>share oreo</th>
+    <th>most used</th>
+    <th>most likely</th>
+  </thead>
+  <tbody>
+    {#each data as d}
+      <tr>
+        <td>{d.query.split('').join(' ')}</td>
+        <td>{d.possible}</td>
+        <td>{format('.2%')(d.shareEven)}</td>
+        <td>{format('.2%')(d.shareOreo)}</td>
+        <td>{d.mostUsed}</td>
+        <td>{d.mostLikely}</td>
+      </tr>
+    {/each}
+  </tbody>
+</table> -->
+
 <div class="query">
-  {#if datum}
-    <p>{datum.query ? datum.query.split('').join(' ') : '&nbsp;'}</p>
-    <p>{datum.possible}</p>
-    <p>{format('.2%')(datum.shareEven)}</p>
-    <p>{format('.2%')(datum.shareOreo)}</p>
-    <p>{datum.mostUsed}</p>
-    <p>{datum.mostLikely}</p>
-  {/if}
+  <p>
+    <span class="prop">Query</span><span
+      class="value">{datum.query ? datum.query
+            .split('')
+            .join(' ') : '&nbsp;'}</span>
+  </p>
+  <p>
+    <span class="prop">Possible words</span><span
+      class="value">{datum.possible}</span>
+  </p>
+  <p>
+    <span class="prop">Even share</span><span
+      class="value">{format('.2%')(datum.shareEven)}</span>
+  </p>
+  <p>
+    <span class="prop">OREO share</span><span
+      class="value">{format('.2%')(datum.shareOreo)}</span>
+  </p>
+  <p>
+    <span class="prop">Most used</span><span
+      class="value">{datum.mostUsed}</span>
+  </p>
+  <p>
+    <span class="prop">Most probable</span><span
+      class="value">{datum.mostLikely}</span>
+  </p>
 </div>
 
 <style>
@@ -153,11 +187,20 @@
     transform: rotateY(180deg);
   }
 
-  span {
+  .inner span {
     display: block;
     font-size: 2.5em;
     width: 100%;
     margin-top: 0.125em;
     position: relative;
+  }
+
+  .query {
+    max-width: 15em;
+    margin: 0 auto;
+  }
+  .query p {
+    display: flex;
+    justify-content: space-between;
   }
 </style>
