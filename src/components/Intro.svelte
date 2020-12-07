@@ -20,7 +20,7 @@
           Goldenberg</a>
       </p>
 
-      <time>December 2020</time>
+      <time>January 2021</time>
     </div>
   </div>
 
@@ -70,12 +70,12 @@
 
   h3 {
     font-size: 4em;
-    text-align: center;
+    /* text-align: center; */
   }
 
   mark {
     box-decoration-break: clone;
-    padding: 0.2em;
+    /* padding: 0.2em; */
   }
 
   .byline {

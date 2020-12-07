@@ -5,6 +5,8 @@
   const { ctx } = getContext("canvas");
   export let r = 1;
   export let fill = "#000";
+  export let xQuantile;
+  export let yQuantile;
 
   $: {
     if ($ctx) {
@@ -22,7 +24,7 @@
         }
         $ctx.beginPath();
         $ctx.arc($xGet(d), $yGet(d), r * mult, 0, 2 * Math.PI, false);
-        $ctx.fillStyle = f;
+        $ctx.fillStyle = d.prob > xQuantile || d.count > yQuantile ? f : "#eee";
         $ctx.fill();
       });
     }

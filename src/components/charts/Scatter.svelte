@@ -7,11 +7,17 @@
   import { line, curveStepBefore } from "d3-shape";
   import { axisLeft, axisBottom } from "d3-axis";
   import { csv } from "d3-fetch";
-  import { linearRegression, linearRegressionLine } from "simple-statistics";
+  import {
+    linearRegression,
+    linearRegressionLine,
+    quantile,
+  } from "simple-statistics";
   import ScatterCanvas from "./Scatter.Canvas.svelte";
   import AxisX from "./Scatter.AxisX.svelte";
   import AxisY from "./Scatter.AxisY.svelte";
   import Line from "./Scatter.Line.svelte";
+
+  const percentile = 0.95;
 
   let data = [];
   let highlightData = [];
@@ -20,18 +26,23 @@
   let x = "prob";
   let y = "count";
 
-  $: xMax = max(data, (d) => d[x]);
-  $: yMax = max(data, (d) => d[y]);
+  $: xVals = data.map((d) => d[x]);
+  $: yVals = data.map((d) => d[y]);
+  $: xMax = max(xVals);
+  $: yMax = max(yVals);
   $: xDomain = [0, xMax];
   $: yDomain = [0, yMax];
-  $: xMean = mean(data, (d) => d[x]);
-  $: yMean = mean(data, (d) => d[y]);
-  $: console.log(xMean, yMean);
+  $: xMean = mean(xVals);
+  $: yMean = mean(yVals);
   $: regression = linearRegression(data.map((d) => [d[x], d[y]]));
   $: regressionLine = linearRegressionLine(regression);
   $: r1 = regressionLine(0);
   $: r2 = regressionLine(xMax);
+  $: xQuantile = data.length ? quantile(xVals, percentile) : 0;
+  $: yQuantile = data.length ? quantile(yVals, percentile) : 0;
 
+  // $: console.log({ xQuantile, yQuantile });
+  // $: console.log(data.find((d) => d.answer === "OREO"));
   // $: scaleX = scalePow().exponent(0.5).domain(xDomain);
 
   const cleanAnswers = (arr) => {
@@ -68,13 +79,23 @@
       yPadding="{[r * 2, r * 2]}"
       xPadding="{[r * 2, r * 2]}"
       data="{data}">
-      <Canvas>
-        <ScatterCanvas r="{r}" fill="{fill}" />
-      </Canvas>
       <Svg>
         <AxisX formatTick="{(d) => format('.3%')(d)}" />
         <AxisY formatTick="{(d) => format(',')(d)}" />
+      </Svg>
+      <Canvas>
+        <ScatterCanvas
+          r="{r}"
+          fill="{fill}"
+          xQuantile="{xQuantile}"
+          yQuantile="{yQuantile}" />
+      </Canvas>
+      <Svg>
         <Line x1="{0}" x2="{xMax}" y1="{r1}" y2="{r2}" />
+        <Line x1="{xMean}" x2="{xMean}" y1="{yMax}" y2="{0}" />
+        <Line y1="{yMean}" y2="{yMean}" x1="{xMax}" x2="{0}" />
+        <Line x1="{xQuantile}" x2="{xQuantile}" y1="{yMax}" y2="{0}" />
+        <Line y1="{yQuantile}" y2="{yQuantile}" x1="{xMax}" x2="{0}" />
       </Svg>
     </LayerCake>
   </div>
