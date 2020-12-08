@@ -6,13 +6,24 @@
       src: "email.jpg",
       alt: "Screenshot of an email from a tweet",
       caption:
-        "Letter to the editor of the USA Today crossword screenshot from <a href=https://twitter.com/smileyb97/status/1228105944061685760>a tweet.</a>",
+        "Letter to the editor of the USA Today crossword screenshot from <a href='https://twitter.com/smileyb97/status/1228105944061685760'>a tweet.</a>",
     },
     mukbang: {
       src: "mukbang.jpg",
       alt: "Screenshot of two people eating oreos with mustard",
       caption:
-        "Shay Mitchell tries an Oreo with mustard on <a href=https://www.youtube.com/watch?v=FA1FCW_DmEI?t=83>YouTube.</a>",
+        "Shay Mitchell tries an Oreo with mustard on <a href='https://www.youtube.com/watch?v=FA1FCW_DmEI?t=83'>YouTube.</a>",
+    },
+    aoc: {
+      src: "aoc.jpg",
+      alt: "Screenshot of Ken Jennings tweet about AOC and LBJ",
+      caption:
+        "Ken Jennings <a href='https://twitter.com/KenJennings/status/1070120490864336896'>tweeting</a> crossword constructing tips.",
+    },
+    chef: {
+      src: "chef.png",
+      alt: "Chef kiss",
+      caption: "",
     },
   };
 </script>
