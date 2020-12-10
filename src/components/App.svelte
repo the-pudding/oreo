@@ -18,6 +18,7 @@
   const options = {
     keyboard: true,
     allowTouchMove: false,
+    speed: 500,
     // shortSwipes: false,
     // longSwipesRatio: 0.1,
     // simulateTouch: false,

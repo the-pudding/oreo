@@ -13,7 +13,6 @@
   let value = years[0].key;
   $: active = +value;
   $: terms = years.find((d) => d.key === active).value;
-  $: console.log(terms);
 </script>
 
 <div class="mini">

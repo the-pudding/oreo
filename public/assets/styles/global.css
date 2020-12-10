@@ -209,3 +209,22 @@ main {
 .swiper-container-vertical .slide-content:nth-of-type(n + 1) {
 	padding-top: var(--nav-height);
 }
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2) .slide-content {
+	opacity: 0;
+	transition: opacity 500ms ease-in-out;
+}
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-prev .slide-content {
+	opacity: 0;
+	transition: opacity 500ms ease-in-out;
+}
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-next .slide-content {
+	opacity: 0;
+	transition: opacity 500ms ease-in-out;
+}
+
+.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-active .slide-content {
+	opacity: 1;
+}
