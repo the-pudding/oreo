@@ -43,7 +43,7 @@
       <AxisX />
       <AxisY
         formatTick="{(d) => format('.2%')(d)}"
-        label="{' share of all clues'}" />
+        label="{' share of 4-letter clues'}" />
       <Line />
     </Svg>
   </LayerCake>
@@ -53,7 +53,7 @@
   .chart {
     height: 50vh;
     padding: 0 4em;
-    max-width: 80em;
+    max-width: 60em;
     margin: 0 auto;
   }
 

@@ -163,7 +163,8 @@ main {
 	--text-main: var(--fg1);
   --links: var(--fg1);
   --focus: var(--fg1);
-  --border: var(--bg1);
+	--border: var(--bg1);
+	--input-thumb: var(--fg1);
 }
 
 .swiper-container-vertical .swiper-slide:nth-of-type(3) .swiper-slide {
@@ -177,7 +178,8 @@ main {
 	--text-main: var(--fg2);
   --links: var(--fg2);
   --focus: var(--fg2);
-  --border: var(--bg2);
+	--border: var(--bg2);
+	--input-thumb: var(--fg2);
 }
 
 .swiper-container-vertical .swiper-slide:nth-of-type(4) .swiper-slide {
@@ -191,7 +193,8 @@ main {
 	--text-main: var(--fg3);
   --links: var(--fg3);
   --focus: var(--fg3);
-  --border: var(--bg3);
+	--border: var(--bg3);
+	--input-thumb: var(--fg3);
 }
 
 .swiper-container-vertical .slide-content:nth-of-type(n + 1) {

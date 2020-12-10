@@ -39,80 +39,70 @@
   //   ]);
 </script>
 
-<div class="grid">
-  {#each letters as ly, y}
-    <div class="cards">
-      {#each ly as letter, x}
-        <div class="card" class:flip="{flipped[x]}" on:click="{() => flip(x)}">
-          <div class="inner">
-            <div class="front">
-              <!-- <div class="bg" style="opacity: {scale(heatmap[x])};"></div> -->
-              <span>?</span>
+<section>
+  <div class="grid">
+    {#each letters as ly, y}
+      <div class="cards">
+        {#each ly as letter, x}
+          <div
+            class="card"
+            class:flip="{flipped[x]}"
+            on:click="{() => flip(x)}">
+            <div class="inner">
+              <div class="front">
+                <!-- <div class="bg" style="opacity: {scale(heatmap[x])};"></div> -->
+                <span>?</span>
+              </div>
+              <div class="back"><span>{letter}</span></div>
             </div>
-            <div class="back"><span>{letter}</span></div>
           </div>
-        </div>
-      {/each}
-    </div>
-  {/each}
-</div>
-
-<!-- <table>
-  <thead>
-    <th>query</th>
-    <th>possible</th>
-    <th>share even</th>
-    <th>share oreo</th>
-    <th>most used</th>
-    <th>most likely</th>
-  </thead>
-  <tbody>
-    {#each data as d}
-      <tr>
-        <td>{d.query.split('').join(' ')}</td>
-        <td>{d.possible}</td>
-        <td>{format('.2%')(d.shareEven)}</td>
-        <td>{format('.2%')(d.shareOreo)}</td>
-        <td>{d.mostUsed}</td>
-        <td>{d.mostLikely}</td>
-      </tr>
+        {/each}
+      </div>
     {/each}
-  </tbody>
-</table> -->
+  </div>
 
-<div class="query">
-  <p>
-    <span class="prop">Query</span><span
-      class="value">{datum.query ? datum.query
-            .split('')
-            .join(' ') : '&nbsp;'}</span>
-  </p>
-  <p>
-    <span class="prop">Possible words</span><span
-      class="value">{datum.possible}</span>
-  </p>
-  <p>
-    <span class="prop">Even share</span><span
-      class="value">{format('.2%')(datum.shareEven)}</span>
-  </p>
-  <p>
-    <span class="prop">OREO share</span><span
-      class="value">{format('.2%')(datum.shareOreo)}</span>
-  </p>
-  <p>
-    <span class="prop">Most used</span><span
-      class="value">{datum.mostUsed}</span>
-  </p>
-  <p>
-    <span class="prop">Most probable</span><span
-      class="value">{datum.mostLikely}</span>
-  </p>
-</div>
+  <div class="query">
+    <p>
+      <span class="prop">Query</span><span
+        class="value">{datum.query ? datum.query
+              .split('')
+              .join(' ') : '&nbsp;'}</span>
+    </p>
+    <p>
+      <span class="prop">Possible words</span><span
+        class="value">{format(',')(datum.possible)}</span>
+    </p>
+    <p>
+      <span class="prop">Even share</span><span
+        class="value">{format('.2%')(datum.shareEven)}</span>
+    </p>
+    <p>
+      <span class="prop">OREO share</span><span
+        class="value">{format('.2%')(datum.shareOreo)}</span>
+    </p>
+    <p>
+      <span class="prop">Most used</span><span
+        class="value">{datum.mostUsed}</span>
+    </p>
+    <p>
+      <span class="prop">Most probable</span><span
+        class="value">{datum.mostLikely}</span>
+    </p>
+  </div>
+</section>
 
 <style>
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .grid {
     display: flex;
     flex-direction: column;
+    margin: 0 1em;
+    /* width: 16em; */
   }
   .cards {
     display: flex;
@@ -196,11 +186,24 @@
   }
 
   .query {
-    max-width: 15em;
-    margin: 0 auto;
+    width: 12em;
+    margin: 0 1em;
   }
   .query p {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px dashed var(--default);
+    font-size: 0.85em;
+  }
+
+  .query p:last-of-type {
+    border: none;
+  }
+
+  .prop {
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: var(--bold);
   }
 </style>

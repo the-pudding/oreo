@@ -27,9 +27,9 @@
 <style>
   .outer {
     margin-top: 1.25em;
+    max-width: 60em;
     margin: 0 auto;
     padding: 1em;
-    max-width: 70em;
   }
   .chart {
     height: 50vh;

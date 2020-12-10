@@ -7,11 +7,11 @@
   import { line, curveStepBefore } from "d3-shape";
   import { axisLeft, axisBottom } from "d3-axis";
   import { csv } from "d3-fetch";
-  import {
-    linearRegression,
-    linearRegressionLine,
-    quantile,
-  } from "simple-statistics";
+  // import {
+  //   linearRegression,
+  //   linearRegressionLine,
+  //   quantile,
+  // } from "simple-statistics";
   import ScatterCanvas from "./Scatter.Canvas.svelte";
   import AxisX from "./Scatter.AxisX.svelte";
   import AxisY from "./Scatter.AxisY.svelte";
@@ -20,7 +20,6 @@
   const percentile = 0.95;
 
   let data = [];
-  let highlightData = [];
   let r = 2;
   let fill = "#187aaf";
   let x = "prob";
@@ -34,25 +33,20 @@
   $: yDomain = [0, yMax];
   $: xMean = mean(xVals);
   $: yMean = mean(yVals);
-  $: regression = linearRegression(data.map((d) => [d[x], d[y]]));
-  $: regressionLine = linearRegressionLine(regression);
-  $: r1 = regressionLine(0);
-  $: r2 = regressionLine(xMax);
-  $: xQuantile = data.length ? quantile(xVals, percentile) : 0;
-  $: yQuantile = data.length ? quantile(yVals, percentile) : 0;
 
-  // $: console.log({ xQuantile, yQuantile });
-  // $: console.log(data.find((d) => d.answer === "OREO"));
-  // $: scaleX = scalePow().exponent(0.5).domain(xDomain);
+  // $: xQuantile = data.length ? quantile(xVals, percentile) : 0;
+  // $: yQuantile = data.length ? quantile(yVals, percentile) : 0;
 
   const cleanAnswers = (arr) => {
-    return arr.map((d) => ({
-      ...d,
-      count: +d.count,
-      percent: +d.percent,
-      sum: +d.sum,
-      prob: +d.prob,
-    }));
+    return arr
+      .map((d) => ({
+        ...d,
+        count: +d.count,
+        percent: +d.percent,
+        sum: +d.sum,
+        prob: +d.prob,
+      }))
+      .filter((d) => !["EEEE", "EEES"].includes(d.answer));
   };
 
   onMount(() => {
@@ -60,7 +54,6 @@
       .then(cleanAnswers)
       .then((result) => {
         data = result;
-        highlightData = data.filter((d) => d.answer === "OREO");
       })
       .catch((err) => {
         console.log(err);
@@ -84,29 +77,39 @@
         <AxisY formatTick="{(d) => format(',')(d)}" />
       </Svg>
       <Canvas>
-        <ScatterCanvas
-          r="{r}"
-          fill="{fill}"
-          xQuantile="{xQuantile}"
-          yQuantile="{yQuantile}" />
+        <ScatterCanvas r="{r}" fill="{fill}" />
       </Canvas>
       <Svg>
-        <Line x1="{0}" x2="{xMax}" y1="{r1}" y2="{r2}" />
-        <Line x1="{xMean}" x2="{xMean}" y1="{yMax}" y2="{0}" />
-        <Line y1="{yMean}" y2="{yMean}" x1="{xMax}" x2="{0}" />
-        <Line x1="{xQuantile}" x2="{xQuantile}" y1="{yMax}" y2="{0}" />
-        <Line y1="{yQuantile}" y2="{yQuantile}" x1="{xMax}" x2="{0}" />
+        <!-- <Line x1="{0}" x2="{xMax}" y1="{r1}" y2="{r2}" /> -->
+        <!-- <Line x1="{xMean}" x2="{xMean}" y1="{yMax}" y2="{0}" /> -->
+        <!-- <Line y1="{yMean}" y2="{yMean}" x1="{xMax}" x2="{0}" /> -->
+        <!-- <Line x1="{xQuantile}" x2="{xQuantile}" y1="{yMax}" y2="{0}" />
+        <Line y1="{yQuantile}" y2="{yQuantile}" x1="{xMax}" x2="{0}" /> -->
       </Svg>
     </LayerCake>
   </div>
+  <p class="note">
+    <span>Note: this chart excludes "EEEE" and "EEES" which have probabilities
+      of 0.036% and 0.023%, repsectively.</span>
+  </p>
 {/if}
 
 <style>
   .chart {
     height: 50vh;
     width: 100%;
-    padding: 0 4em;
-    max-width: 80em;
+    padding: 0;
+    max-width: 60em;
     margin: 0 auto;
+  }
+  .note {
+    width: 100%;
+    max-width: 60em;
+    margin: 1em auto;
+    font-style: italic;
+    text-align: center;
+  }
+  span {
+    font-size: 0.75em;
   }
 </style>

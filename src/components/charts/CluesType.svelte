@@ -169,18 +169,19 @@
   ul {
     display: flex;
     flex-direction: column;
+    list-style-type: none;
   }
 
   li {
-    margin: 0.25em;
-    display: inline-block;
     position: relative;
-    padding: 0 0.5em;
-    margin: 0;
+    padding: 0.25em 0.5em;
+    margin-bottom: 0.1em;
+    font-size: 0.85em;
   }
 
   span {
     position: relative;
+    border-radius: 4px;
   }
 
   .bg {

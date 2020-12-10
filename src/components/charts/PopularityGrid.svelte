@@ -31,6 +31,8 @@
 <style>
   .outer {
     padding: 1em;
+    margin: 0 auto;
+    max-width: 60em;
   }
 
   .grid {
