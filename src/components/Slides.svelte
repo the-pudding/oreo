@@ -134,7 +134,7 @@
   }
 
   .text {
-    font-size: 1.25em;
+    font-size: 1em;
   }
 
   .reverse {
@@ -177,6 +177,10 @@
   @media only screen and (min-width: 640px) {
     .slide-content {
       font-size: 21px;
+    }
+
+    .text {
+      font-size: 1.25em;
     }
   }
 </style>

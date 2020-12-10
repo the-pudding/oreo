@@ -69,7 +69,7 @@
   }
 
   h3 {
-    font-size: 4em;
+    font-size: 2em;
     /* text-align: center; */
   }
 
@@ -100,5 +100,11 @@
   .keys {
     display: flex;
     justify-content: center;
+  }
+
+  @media only screen and (min-width: 640px) {
+    h3 {
+      font-size: 4em;
+    }
   }
 </style>

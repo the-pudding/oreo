@@ -115,8 +115,8 @@
   }
 
   .cards:last-of-type .card .back {
-    background: var(--fg);
-    color: var(--bg);
+    background: var(--highlight);
+    color: var(--fg);
     opacity: 1;
   }
 

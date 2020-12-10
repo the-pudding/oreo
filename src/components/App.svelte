@@ -77,8 +77,8 @@
 
 <Header />
 
-<Nav levels="{copy.levels}" on:jump="{onJump}" />
-<Tap debug="{false}" on:tap="{onTap}" />
+<!-- <Nav levels="{copy.levels}" on:jump="{onJump}" /> -->
+<Tap debug="{false}" showArrows="{true}" on:tap="{onTap}" />
 
 {#if mounted}
   <Swiper

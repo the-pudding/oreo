@@ -207,7 +207,7 @@ main {
 }
 
 .swiper-container-vertical .slide-content:nth-of-type(n + 1) {
-	padding-top: var(--nav-height);
+	/* padding-top: var(--nav-height); */
 }
 
 .swiper-container-horizontal .swiper-slide:nth-of-type(n + 2) .slide-content {
