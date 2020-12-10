@@ -53,8 +53,10 @@
 
 <section>
   <fieldset>
-    <label for="clue">Name an African antelope</label>
-    <input bind:value="{guess}" name="clue" placeholder="Enter name..." />
+    <input
+      bind:value="{guess}"
+      name="clue"
+      placeholder="Name an African antelope" />
     <button on:click="{onSubmit}">Submit</button>
   </fieldset>
   <p><button on:click="{onReveal}">Reveal Answers</button></p>
@@ -75,6 +77,7 @@
   .outer {
     max-width: 60em;
     margin: 0 auto;
+    user-select: none;
   }
 
   section {

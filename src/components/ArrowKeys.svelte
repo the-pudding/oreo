@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     padding: 0.25em;
-    background-color: var(--primary);
+    background-color: var(--fg);
     color: var(--off-white);
     line-height: 1;
     margin: 0.1em;

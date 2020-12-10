@@ -96,6 +96,10 @@
     padding: 0 1em;
   }
 
+  .chart {
+    user-select: none;
+  }
+
   .intro {
     display: flex;
     flex-direction: column;

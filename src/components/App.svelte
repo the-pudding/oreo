@@ -34,7 +34,7 @@
 
   // first is vertical, remaining are horizontal
   let swiperInstances = [];
-  let mounted = true;
+  let mounted = false;
 
   const createSwiper = (e, index) => {
     swiperInstances[index] = e.detail[0];

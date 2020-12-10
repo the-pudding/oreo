@@ -27,11 +27,11 @@
 
 <style>
   circle {
-    fill: var(--primary);
+    fill: var(--fg);
   }
 
   text {
-    fill: var(--primary);
+    fill: var(--fg);
     font-weight: var(--bold);
   }
 
