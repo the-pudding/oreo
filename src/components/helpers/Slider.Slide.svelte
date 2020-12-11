@@ -4,13 +4,10 @@
 
   $: w = $direction === "horizontal" ? $width : "100%";
   $: h = $direction === "vertical" ? $height : "100%";
-  $: console.log(w, h);
 </script>
 
 <div class="slide" style="width: {w}; height: {h};">
-  <div class="content">
-    <slot />
-  </div>
+  <slot />
 </div>
 
 <style>
@@ -18,6 +15,5 @@
     position: relative;
     width: 100%;
     height: 100%;
-    transition: all 300ms ease-in-out;
   }
 </style>

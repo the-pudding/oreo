@@ -1,5 +1,5 @@
 <script>
-  import { SwiperSlide } from "swiper/svelte";
+  import Slide from "./helpers/Slider.Slide.svelte";
   import Oreo from "./Oreo.svelte";
   import Chart from "./Chart.svelte";
   import Special from "./Special.svelte";
@@ -14,7 +14,7 @@
   export let slides;
 </script>
 
-<SwiperSlide>
+<Slide>
   <div class="slide-content intro">
     {#if +level > 1}
       <p class="prev">
@@ -39,10 +39,11 @@
       </p>
     {/if}
   </div>
-</SwiperSlide>
+</Slide>
 
+<!-- 
 {#each slides as { text, className, chart, special, image }}
-  <SwiperSlide>
+  <Slide>
     <div class="slide-content {className || ''}">
       {#if typeof text === 'string'}
         <div class="graf">
@@ -76,9 +77,8 @@
         <Image name="{image}" />
       {/if}
     </div>
-  </SwiperSlide>
-{/each}
-
+  </Slide>
+{/each} -->
 <style>
   .slide-content {
     display: flex;
