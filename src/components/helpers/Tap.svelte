@@ -23,7 +23,7 @@
   const getH = (side) => (["top", "bottom"].includes(side) ? size : "100%");
   const onKeyDown = (e) => {
     const side = keyMap[e.key];
-    if (side) {
+    if (enableKeyboard && side) {
       e.preventDefault();
       dispatch("tap", side);
     }
