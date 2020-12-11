@@ -22,6 +22,9 @@
       </div>
     {/each}
   </div>
+  <p class="note">
+    Letter distribution of 4,850,005 crossword puzzle answers since 1993.
+  </p>
 </div>
 
 <style>
@@ -99,6 +102,12 @@
     font-weight: var(--bold);
     background: var(--fg);
     color: var(--bg);
+  }
+
+  .note {
+    text-align: center;
+    font-size: 0.85em;
+    font-style: italic;
   }
 
   @media only screen and (min-width: 1280px) {

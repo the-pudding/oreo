@@ -8,17 +8,13 @@
   export let baseline = false;
   export let snapTicks = false;
   export let ticks = undefined;
-  export let xTick = undefined;
+  export let xTick = 0;
   export let yTick = 16;
   export let dxTick = 0;
   export let dyTick = 0;
 
-  $: isBandwidth = typeof $xScale.bandwidth === "function";
-
   $: tickVals = Array.isArray(ticks)
     ? ticks
-    : isBandwidth
-    ? $xScale.domain()
     : typeof ticks === "function"
     ? ticks($xScale.ticks())
     : $xScale.ticks(ticks);
@@ -45,7 +41,7 @@
         <line y1="{$height * -1}" y2="0" x1="0" x2="0"></line>
       {/if}
       <text
-        x="{xTick || isBandwidth ? $xScale.bandwidth() / 2 : 0}"
+        x="{xTick}"
         y="{yTick}"
         dx="{dxTick}"
         dy="{dyTick}"
@@ -69,6 +65,10 @@
     font-size: 0.75em;
   }
 
+  .tick:nth-of-type(4n + 1) {
+    display: none;
+  }
+
   line,
   .tick line {
     stroke: var(--default);
@@ -84,5 +84,14 @@
     stroke-dasharray: 0;
     stroke: var(--default);
     stroke-opacity: 0.5;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .tick:nth-of-type(4n + 1) {
+      display: block;
+    }
+    .tick:nth-of-type(even) {
+      display: none;
+    }
   }
 </style>
