@@ -228,3 +228,18 @@ main {
 .swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-active .slide-content {
 	opacity: 1;
 }
+
+.svelte-crossword {
+  --xd-font: var(--sans);
+  --xd-primary-highlight-color: var(--yellow);
+  --xd-secondary-highlight-color: var(--yellowLight);
+  --xd-main-color: var(--fg);
+  --xd-bg-color: var(--bg);
+  --xd-accent-color: var(--off-white);
+  --xd-scrollbar-color: var(--default);
+  --xd-order: row;
+}
+
+.svelte-crossword .toolbar button {
+	font-weight: var(--bold);
+}

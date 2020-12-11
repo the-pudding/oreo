@@ -1,30 +1,91 @@
-[
-  {
-    "clue": "Black-and-white cookie",
-    "answer": "OREO",
-    "direction": "down",
-    "x": 0,
-    "y": 0
-  },
-  {
-    "clue": "Popular cookie",
-    "answer": "OREO",
-    "direction": "down",
-    "x": 3,
-    "y": 0
-  },
-  {
-    "clue": "Creme-filled cookie",
-    "answer": "OREO",
-    "direction": "across",
-    "x": 0,
-    "y": 3
-  },
-  {
-    "clue": "Sandwich cookie",
-    "answer": "OREO",
-    "direction": "across",
-    "x": 0,
-    "y": 0
-  }
-]
+[{
+"clue": "Iconic sandwich",
+"answer": "PBANDJ",
+"direction": "across",
+"x": 7,
+"y":3
+},
+{
+"clue": "Vanilla cookies with marshmallow",
+"answer": "PEEPS",
+"direction": "across",
+"x": 9,
+"y":5
+},
+{
+"clue": "Citrus in Japan",
+"answer": "LEMONICE",
+"direction": "across",
+"x": 0,
+"y": 6
+},
+{
+"clue": "Citrus drink",
+"answer": "LIMEADE",
+"direction": "across",
+"x": 4,
+"y": 9
+},
+{
+"clue": "Christmas candy",
+"answer": "CANDYCANE",
+"direction": "across",
+"x": 7,
+"y":11
+},
+{
+"clue": "Meat-inspired flavor",
+"answer": "HOTCHICKENWING",
+"direction": "across",
+"x": 0,
+"y": 13
+},
+{
+"clue": "Sweet Fall treat on a stick",
+"answer": "CARAMELAPPLE",
+"direction": "down",
+"x": 0,
+"y":0
+},
+{
+"clue": "Goes on sushi",
+"answer": "WASABI",
+"direction": "down",
+"x": 5,
+"y":1
+},
+{
+"clue": "A house, sometimes",
+"answer": "GINGERBREAD",
+"direction": "down",
+"x": 10,
+"y":1
+},
+{
+"clue": "Frozen citrus treat",
+"answer": "CREAMSICLE",
+"direction": "down",
+"x": 2,
+"y":2
+},
+{
+"clue": "All-american",
+"answer": "APPLEPIE",
+"direction": "down",
+"x": 7,
+"y":2
+},
+{
+"clue": "Citrus dessert",
+"answer": "KEYLIMEPIE",
+"direction": "down",
+"x": 15,
+"y":5
+},
+{
+"clue": "Italian dessert",
+"answer": "TIRAMISU",
+"direction": "down",
+"x": 5,
+"y": 8
+}]
