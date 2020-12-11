@@ -69,10 +69,6 @@
     font-size: 0.75em;
   }
 
-  .tick:first-of-type {
-    display: none;
-  }
-
   line,
   .tick line {
     stroke: var(--default);
@@ -88,5 +84,26 @@
     stroke-dasharray: 0;
     stroke: var(--default);
     stroke-opacity: 0.5;
+  }
+
+  .tick:nth-of-type(4n + 1) {
+    display: none;
+  }
+
+  .tick:first-of-type {
+    display: none;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .tick:nth-of-type(4n + 1) {
+      display: block;
+    }
+    .tick:nth-of-type(even) {
+      display: none;
+    }
+
+    .tick:first-of-type {
+      display: none;
+    }
   }
 </style>

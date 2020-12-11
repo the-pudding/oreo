@@ -7,15 +7,11 @@
   import { line, curveStepBefore } from "d3-shape";
   import { axisLeft, axisBottom } from "d3-axis";
   import { csv } from "d3-fetch";
-  // import {
-  //   linearRegression,
-  //   linearRegressionLine,
-  //   quantile,
-  // } from "simple-statistics";
   import ScatterCanvas from "./Scatter.Canvas.svelte";
   import AxisX from "./Scatter.AxisX.svelte";
   import AxisY from "./Scatter.AxisY.svelte";
   import Line from "./Scatter.Line.svelte";
+  import Voronoi from "./Scatter.Voronoi.svelte";
 
   const percentile = 0.95;
 
@@ -81,10 +77,7 @@
       </Canvas>
       <Svg>
         <!-- <Line x1="{0}" x2="{xMax}" y1="{r1}" y2="{r2}" /> -->
-        <!-- <Line x1="{xMean}" x2="{xMean}" y1="{yMax}" y2="{0}" /> -->
-        <!-- <Line y1="{yMean}" y2="{yMean}" x1="{xMax}" x2="{0}" /> -->
-        <!-- <Line x1="{xQuantile}" x2="{xQuantile}" y1="{yMax}" y2="{0}" />
-        <Line y1="{yQuantile}" y2="{yQuantile}" x1="{xMax}" x2="{0}" /> -->
+        <Voronoi />
       </Svg>
     </LayerCake>
   </div>
