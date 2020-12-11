@@ -9,9 +9,13 @@
   import Intro from "./Intro.svelte";
   import Slides from "./Slides.svelte";
   import Tap from "./helpers/Tap.svelte";
+  import Slider from "./helpers/Slider.svelte";
+  import Slide from "./helpers/Slider.Slide.svelte";
 
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
+
+  let active = 0;
 
   SwiperCore.use([Keyboard]);
 
@@ -60,25 +64,34 @@
   };
 
   const onTap = ({ detail }) => {
-    console.log(detail);
+    const inc = detail === "right" ? 1 : -1;
+    active += inc;
   };
 
   onMount(() => {
-    mounted = true;
+    mounted = false;
     // // TODO remove
-    setTimeout(() => {
-      swiperInstances[0].slideTo(3);
-      swiperInstances[3].slideTo(16);
-    }, 100);
+    // setTimeout(() => {
+    //   swiperInstances[0].slideTo(3);
+    //   swiperInstances[3].slideTo(16);
+    // }, 100);
   });
 </script>
 
 <Meta {...copy} />
 
-<Header />
-
 <!-- <Nav levels="{copy.levels}" on:jump="{onJump}" /> -->
 <Tap debug="{false}" showArrows="{true}" on:tap="{onTap}" />
+<Slider direction="vertical" active="{active}">
+  <Slide>
+    <p>Whatup big fella?</p>
+  </Slide>
+
+  <Slide>
+    <img
+      src="https://www.mercurynews.com/wp-content/uploads/2019/10/BNG-L-WARRIORS-1011-18.jpg?w=1368" />
+  </Slide>
+</Slider>
 
 {#if mounted}
   <Swiper
