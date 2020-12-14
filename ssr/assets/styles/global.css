@@ -139,6 +139,7 @@ mark.custom {
 
 main {
 	height: 100vh;
+	width: 100%;
 }
 
 .swiper-container {
@@ -146,7 +147,7 @@ main {
 	height: 100%;
 }
 
-.swiper-container-vertical .swiper-slide:nth-of-type(1) {
+.slider .slide:nth-of-type(1) {
 	--fg: var(--fg3);
 	--bg: var(--bg3);
 	--default: var(--dg3);
@@ -161,7 +162,7 @@ main {
 	--input-thumb: var(--fg3);
 }
 
-.swiper-container-vertical .swiper-slide:nth-of-type(2) .swiper-slide {
+.slider .slide:nth-of-type(2) .slide {
 	--fg: var(--fg1);
 	--bg: var(--bg1);
 	--default: var(--dg1);
@@ -176,7 +177,7 @@ main {
 	--input-thumb: var(--fg1);
 }
 
-.swiper-container-vertical .swiper-slide:nth-of-type(3) .swiper-slide {
+.slider .slide:nth-of-type(3) .slide {
 	--fg: var(--fg2);
 	--bg: var(--bg2);
 	--default: var(--dg2);
@@ -191,7 +192,7 @@ main {
 	--input-thumb: var(--fg2);
 }
 
-.swiper-container-vertical .swiper-slide:nth-of-type(4) .swiper-slide {
+.slider .slide:nth-of-type(4) .slide {
 	--fg: var(--fg3);
 	--bg: var(--bg3);
 	--default: var(--dg3);
@@ -205,29 +206,25 @@ main {
 	--border: var(--bg3);
 	--input-thumb: var(--fg3);
 }
-
-.swiper-container-vertical .slide-content:nth-of-type(n + 1) {
-	/* padding-top: var(--nav-height); */
-}
-
-.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2) .slide-content {
+/* 
+.slider.horizontal .slide:nth-of-type(n + 2) .content {
 	opacity: 0;
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 500ms ease;
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-prev .slide-content {
+.slider.horizontal .slide:nth-of-type(n + 2).slide-prev .slide-content {
 	opacity: 0;
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 500ms ease;
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-next .slide-content {
+.slider.horizontal .slide:nth-of-type(n + 2).slide-next .slide-content {
 	opacity: 0;
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 500ms ease;
 }
 
-.swiper-container-horizontal .swiper-slide:nth-of-type(n + 2).swiper-slide-active .slide-content {
+.slider.horizontal .slide:nth-of-type(n + 2).slide-active .slide-content {
 	opacity: 1;
-}
+} */
 
 .svelte-crossword {
   --xd-font: var(--sans);
@@ -242,4 +239,8 @@ main {
 
 .svelte-crossword .toolbar button {
 	font-weight: var(--bold);
+}
+
+.svelte-crossword .play .clues {
+	height: 20em;
 }

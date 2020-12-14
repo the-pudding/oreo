@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const minifier = require("html-minifier");
+// const minifier = require("html-minifier");
 const shell = require("shelljs");
 
 const CWD = process.cwd();
@@ -26,12 +26,12 @@ const result = template
   .replace(/\.css/g, `.css?version=${version}`)
   .replace(/\.js/g, `.js?version=${version}`);
 
-const minified = minifier.minify(result, {
-  minifyCSS: true,
-  collapseWhitespace: true
-});
+// const minified = minifier.minify(result, {
+//   minifyCSS: true,
+//   collapseWhitespace: true
+// });
 
-fs.writeFileSync(`${tmpPath}/index.html`, minified);
+fs.writeFileSync(`${tmpPath}/index.html`, result);
 shell.rm(`${tmpPath}/ssr.js`);
 shell.cp("-Rf", `${tmpPath}/*`, outPath);
 shell.rm("-Rf", tmpPath);
