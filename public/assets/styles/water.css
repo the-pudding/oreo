@@ -29,7 +29,7 @@ body {
   word-wrap: break-word;
   color: var(--text-main);
 	background: var(--background-body);
-	font-family: var(--body-font);
+	font-family: var(--body-font), sans-serif;
 	text-rendering: optimizeLegibility;
 	font-feature-settings: 'kern' 1, 'onum' 0, 'liga' 0, 'tnum' 1;
 }
