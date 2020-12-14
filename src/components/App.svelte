@@ -12,11 +12,17 @@
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
 
+  let showArrows = false;
+
   let sliderY;
+  let activeY;
   let countY;
 
   let sliderX = [];
+  let activeX = [];
   let countX = [];
+
+  let currentX = 0;
 
   const onTap = ({ detail }) => {
     if (detail === "left") sliderX.forEach((s) => s.prev());
@@ -24,17 +30,30 @@
     else if (detail === "up") sliderY.prev();
     else if (detail === "down") sliderY.next();
   };
+
+  const updateArrows = () => {
+    currentX = activeX[activeY - 1];
+  };
+
+  $: activeX.join(""), activeY, updateArrows();
+  $: showArrows = currentX > 0 ? ["left", "right"] : false;
+  $: disable = currentX === countX[activeY - 1] - 1 ? ["right"] : [];
 </script>
 
 <Meta {...copy} />
 
 <Tap
   directions="{['up', 'down', 'left', 'right']}"
-  showArrows="{false}"
+  showArrows="{showArrows}"
+  disable="{disable}"
   enableKeyboard="{true}"
   on:tap="{onTap}" />
 
-<Slider direction="vertical" bind:this="{sliderY}" bind:count="{countY}">
+<Slider
+  direction="vertical"
+  bind:this="{sliderY}"
+  bind:count="{countY}"
+  bind:active="{activeY}">
   <Slide>
     <Intro hed="{copy.hed}" intro="{copy.intro}" />
   </Slide>
@@ -44,7 +63,8 @@
       <Slider
         direction="horizontal"
         bind:this="{sliderX[i]}"
-        bind:count="{countX[i]}">
+        bind:count="{countX[i]}"
+        bind:active="{activeX[i]}">
         <Slides {...level} />
       </Slider>
     </Slide>

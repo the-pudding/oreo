@@ -179,6 +179,7 @@
   @media only screen and (min-width: 640px) {
     .slide-content {
       font-size: 21px;
+      padding: 0 4rem;
     }
 
     .text {

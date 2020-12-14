@@ -111,10 +111,12 @@
 
     h1 {
       display: block;
+      line-height: 1.4;
     }
 
     .byline {
       align-items: flex-end;
+      padding: 0.5em 1em;
     }
   }
 </style>
