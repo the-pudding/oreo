@@ -8,44 +8,47 @@
   const itemW = 74;
   const rows = 4;
   let w = itemW;
-  let mounted;
+  let mounted = false;
 
   $: x = Math.floor(w / itemW) || 1;
   $: c = x * rows;
   $: sliced = data.slice(0, c);
   $: domain = [+sliced[c - 1].count, +sliced[0].count];
   $: scale = scaleLinear().domain(domain).range([0, 100]);
-  // $: console.log({ w });
 
   onMount(() => {
     mounted = true;
   });
 </script>
 
-<div class="outer" bind:clientWidth="{w}">
-  <div class="grid">
-    {#each sliced as { answer, count }, i}
-      <div class="item" class:highlight="{answer === 'OREO'}">
-        <span class="bg" style="opacity: {scale(+count)}%;"></span>
-        <span class="answer">{answer}</span>
-        <span class="count">{format(',')(count)}</span>
-        <span class="rank">{i + 1}</span>
-      </div>
-    {/each}
+{#if mounted}
+  <div class="outer" bind:clientWidth="{w}">
+    <div class="grid">
+      {#each sliced as { answer, count }, i}
+        <div class="item" class:highlight="{answer === 'OREO'}">
+          <span class="bg" style="opacity: {scale(+count)}%;"></span>
+          <span class="answer">{answer}</span>
+          <span class="count">{format(',')(count)}</span>
+          <span class="rank">{i + 1}</span>
+        </div>
+      {/each}
+    </div>
   </div>
-</div>
+{/if}
 
 <style>
   .outer {
     padding: 1em;
     margin: 0 auto;
     max-width: 60em;
+    width: 100%;
   }
 
   .grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
   }
 
   .item {

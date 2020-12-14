@@ -60,7 +60,7 @@
 <style>
   .chart {
     height: 50vh;
-    padding: 0 4em;
+    padding: 0 1em;
     max-width: 60em;
     width: 100%;
     margin: 0 auto;

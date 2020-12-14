@@ -1,7 +1,7 @@
 <figure>
   <iframe
     title="Shay Mitchell Pregnancy Mukbang"
-    width="560"
+    width="100%"
     height="315"
     src="https://www.youtube-nocookie.com/embed/FA1FCW_DmEI?start=83"
     frameborder="0"

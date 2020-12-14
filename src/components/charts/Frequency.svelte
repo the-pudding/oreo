@@ -74,6 +74,7 @@
     margin-top: 0.25em;
     transition: all 50ms ease-in-out;
     border-radius: 4px;
+    font-size: 0.75em;
   }
 
   .highlight.item--R .percent {
@@ -106,8 +107,16 @@
 
   .note {
     text-align: center;
-    font-size: 0.85em;
+    font-size: 0.75em;
     font-style: italic;
+    padding: 0 1em;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .letter {
+      font-size: 1em;
+      padding: 0.5em 0 0.375em 0;
+    }
   }
 
   @media only screen and (min-width: 1280px) {

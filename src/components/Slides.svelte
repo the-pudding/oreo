@@ -80,6 +80,15 @@
 {/each}
 
 <style>
+  .intro {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
   .slide-content {
     display: flex;
     flex-direction: column;
@@ -100,15 +109,6 @@
   .chart {
     width: 100%;
     user-select: none;
-  }
-
-  .intro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-size: 1.5em;
   }
 
   .intro p {

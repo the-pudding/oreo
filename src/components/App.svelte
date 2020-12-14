@@ -24,10 +24,6 @@
     else if (detail === "up") sliderY.prev();
     else if (detail === "down") sliderY.next();
   };
-
-  onMount(() => {
-    // sliderY.jump(2);
-  });
 </script>
 
 <Meta {...copy} />

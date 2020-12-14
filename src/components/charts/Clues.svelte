@@ -47,6 +47,14 @@
 <div class="outer">
   <div class="left">
     <h3>Common Words</h3>
+    <select bind:value="{active}">
+      {#each words as { word, count }}
+        <option value="{word}">
+          <span class="word">{word}</span>
+          <!-- <span class="count">{format(',')(count)}</span> -->
+        </option>
+      {/each}
+    </select>
     <ul class="words">
       {#each words as { word, count }}
         <li class:active="{active === word}">
@@ -76,6 +84,7 @@
   .outer {
     display: flex;
     justify-content: center;
+    flex-direction: column;
   }
 
   h3 {
@@ -95,7 +104,7 @@
   }
 
   .words {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     width: 16.5em;
     justify-content: space-between;
@@ -140,5 +149,37 @@
     margin-left: 0.5em;
     opacity: 0.75;
     font-size: 0.75em;
+  }
+
+  .left h3 {
+    display: none;
+  }
+
+  .left {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .outer {
+      flex-direction: row;
+    }
+
+    ul.words {
+      display: flex;
+    }
+
+    select {
+      display: none;
+    }
+
+    .left {
+      display: block;
+    }
+
+    .left h3 {
+      display: block;
+    }
   }
 </style>

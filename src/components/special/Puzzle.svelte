@@ -1,10 +1,19 @@
 <script>
+  import { onMount } from "svelte";
   import Crossword from "svelte-crossword";
   import data from "./puzzle.json";
+
+  let mounted;
+
+  onMount(() => {
+    mounted = true;
+  });
 </script>
 
 <section>
-  <Crossword data="{data}" />
+  {#if mounted}
+    <Crossword data="{data}" />
+  {/if}
 </section>
 
 <style>

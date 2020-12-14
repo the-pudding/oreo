@@ -91,7 +91,7 @@
   .chart {
     height: 50vh;
     width: 100%;
-    padding: 0;
+    padding: 0 1em;
     max-width: 60em;
     margin: 0 auto;
   }
@@ -101,8 +101,7 @@
     margin: 1em auto;
     font-style: italic;
     text-align: center;
-  }
-  span {
     font-size: 0.75em;
+    padding: 0 1em;
   }
 </style>

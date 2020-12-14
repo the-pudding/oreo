@@ -34,12 +34,10 @@
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "shelljs": "^0.8.4",
-    "simple-statistics": "^7.3.2",
     "sirv-cli": "^1.0.8",
-    "svelte": "^3.29.7",
-    "svelte-crossword": "^0.3.3",
-    "svelte-preprocess": "^4.6.0",
-    "swiper": "^6.3.5"
+    "svelte": "^3.31.0",
+    "svelte-crossword": "^0.3.4",
+    "svelte-preprocess": "^4.6.0"
   },
   "scripts": {
     "build": "rollup -c",

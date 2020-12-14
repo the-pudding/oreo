@@ -65,7 +65,7 @@
     font-size: 0.75em;
   }
 
-  .tick:nth-of-type(4n + 1) {
+  .tick:nth-of-type(even) {
     display: none;
   }
 
@@ -87,11 +87,12 @@
   }
 
   @media only screen and (min-width: 640px) {
-    .tick:nth-of-type(4n + 1) {
-      display: block;
-    }
     .tick:nth-of-type(even) {
       display: none;
+    }
+
+    .tick:nth-of-type(4n + 1) {
+      display: block;
     }
   }
 </style>

@@ -36,6 +36,7 @@
   table {
     width: 100%;
     font-size: 0.85em;
+    margin: 0 auto;
   }
 
   .highlight {
@@ -70,6 +71,7 @@
   th:nth-child(3) {
     width: 15em;
     padding-left: 2em;
+    display: none;
   }
 
   span {
@@ -82,5 +84,16 @@
     line-height: 1;
     color: var(--white);
     border-radius: 4px;
+  }
+
+  @media only screen and (min-width: 640px) {
+    table {
+      width: 100%;
+    }
+
+    td:nth-child(3),
+    th:nth-child(3) {
+      display: table-cell;
+    }
   }
 </style>

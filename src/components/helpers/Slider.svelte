@@ -56,8 +56,6 @@
   $: context = { direction: _direction, width: _width, height: _height };
   $: setContext("Slider", context);
 
-  $: console.log(width);
-
   onMount(() => {
     children = translateEl.children.length;
     count = children;

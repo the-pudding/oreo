@@ -1,7 +1,7 @@
 <figure>
   <iframe
     title="1993 Oreo commercial"
-    width="560"
+    width="100%"
     height="315"
     src="https://www.youtube-nocookie.com/embed/hIGGeBvAWSA"
     frameborder="0"

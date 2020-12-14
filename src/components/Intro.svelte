@@ -66,6 +66,7 @@
     max-width: 12em;
     padding: 1rem;
     margin: 0;
+    display: none;
   }
 
   h3 {
@@ -82,8 +83,9 @@
     display: flex;
     flex-direction: column;
     font-size: 1em;
-    align-items: flex-end;
     padding: 0.5em 1em;
+    padding-left: 1.5em;
+    padding-top: 1.5em;
   }
 
   .byline p {
@@ -105,6 +107,11 @@
   @media only screen and (min-width: 640px) {
     h3 {
       font-size: 4em;
+      display: block;
+    }
+
+    .byline {
+      align-items: flex-end;
     }
   }
 </style>
