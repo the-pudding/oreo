@@ -9,6 +9,7 @@
 
 <style>
   section {
+    width: 100%;
     max-width: 35em;
     margin: 0 auto;
   }

@@ -5,24 +5,35 @@
 
   export let direction = "horizontal";
   export let duration = "500ms";
-  export let timing = "cubic-bezier(0.5, 0, 0.5, 1);";
+  export let timing = "ease";
+
+  export let count;
   export const next = () => move(1);
   export const prev = () => move(-1);
   export const jump = (val) => move(val, true);
 
+  let children = 0;
   let active = 0;
   let width = 0;
   let height = 0;
-  let children = 0;
+  let isInView = false;
+  let sliderEl;
   let translateEl;
+  let root;
+  let observer;
 
   let _direction = writable();
   let _width = writable();
   let _height = writable();
 
   const move = (val, jump) => {
+    if (!isInView) return false;
     const target = jump ? val : active + val;
     active = Math.max(0, Math.min(children - 1, target));
+  };
+
+  const onIntersect = (e) => {
+    isInView = e[0].isIntersecting;
   };
 
   $: w = direction === "horizontal" ? `${children * width}px` : "100%";
@@ -33,25 +44,34 @@
 
   $: sW = `width: ${w};`;
   $: sH = `height: ${h};`;
-  $: sT = `transform: translate(${x}, ${y});`;
+  $: sT = `transform: translate3d(${x}, ${y}, 0);`;
   $: sTD = `transition-duration: ${duration};`;
   $: sTTF = `transition-timing-function: ${timing};`;
   $: customStyle = `${sW} ${sH} ${sT} ${sTD} ${sTTF}`;
 
   // context
-  $: $_direction = direction;
-  $: $_width = `${width}px`;
-  $: $_height = `${height}px`;
+  $: _direction.set(direction);
+  $: _width.set(`${width}px`);
+  $: _height.set(`${height}px`);
   $: context = { direction: _direction, width: _width, height: _height };
   $: setContext("Slider", context);
 
+  $: console.log(width);
+
   onMount(() => {
     children = translateEl.children.length;
+    count = children;
+    observer = new IntersectionObserver(onIntersect, {
+      root: null,
+      rootMargin: "-1px",
+    });
+    observer.observe(sliderEl);
   });
 </script>
 
 <div
   class="slider {direction}"
+  bind:this="{sliderEl}"
   bind:clientWidth="{width}"
   bind:clientHeight="{height}">
   <div class="translate" bind:this="{translateEl}" style="{customStyle}">
@@ -79,11 +99,11 @@
     z-index: 1;
   }
 
-  .horizontal .translate {
+  .horizontal > .translate {
     flex-direction: row;
   }
 
-  .vertical .translate {
+  .vertical > .translate {
     flex-direction: column;
   }
 </style>

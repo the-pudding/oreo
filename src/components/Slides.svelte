@@ -41,7 +41,6 @@
   </div>
 </Slide>
 
-<!-- 
 {#each slides as { text, className, chart, special, image }}
   <Slide>
     <div class="slide-content {className || ''}">
@@ -78,12 +77,14 @@
       {/if}
     </div>
   </Slide>
-{/each} -->
+{/each}
+
 <style>
   .slide-content {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     margin: 0 auto;
     overflow: hidden;
     font-size: 18px;
@@ -97,6 +98,7 @@
   }
 
   .chart {
+    width: 100%;
     user-select: none;
   }
 

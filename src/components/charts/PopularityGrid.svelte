@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import { format } from "d3-format";
   import { scaleLinear } from "d3-scale";
   import { group } from "d3-array";
@@ -7,16 +8,22 @@
   const itemW = 74;
   const rows = 4;
   let w = itemW;
+  let mounted;
 
-  $: x = Math.floor(w / itemW);
+  $: x = Math.floor(w / itemW) || 1;
   $: c = x * rows;
   $: sliced = data.slice(0, c);
   $: domain = [+sliced[c - 1].count, +sliced[0].count];
   $: scale = scaleLinear().domain(domain).range([0, 100]);
+  // $: console.log({ w });
+
+  onMount(() => {
+    mounted = true;
+  });
 </script>
 
-<div class="outer">
-  <div class="grid" bind:clientWidth="{w}">
+<div class="outer" bind:clientWidth="{w}">
+  <div class="grid">
     {#each sliced as { answer, count }, i}
       <div class="item" class:highlight="{answer === 'OREO'}">
         <span class="bg" style="opacity: {scale(+count)}%;"></span>
