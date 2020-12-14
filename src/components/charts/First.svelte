@@ -156,8 +156,8 @@
     box-shadow: 0 0 1px 0 var(--fg);
     margin: 1px;
     background: var(--highlight);
-    width: 12em;
-    height: 5em;
+    width: 8em;
+    height: 2em;
     font-size: 0.625em;
     border-radius: 4px;
     text-align: center;
@@ -190,5 +190,12 @@
   .term:hover .clue {
     display: block;
     display: flex;
+  }
+
+  @media only screen and (min-width: 640px) {
+    .term {
+      width: 12em;
+      height: 5em;
+    }
   }
 </style>

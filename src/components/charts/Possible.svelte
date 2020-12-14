@@ -208,6 +208,11 @@
   }
 
   @media only screen and (min-width: 640px) {
+    .card {
+      width: 3em;
+      height: 3em;
+    }
+
     .inner span {
       font-size: 2.5em;
     }
