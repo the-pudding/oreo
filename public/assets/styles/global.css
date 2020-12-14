@@ -1,21 +1,6 @@
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../assets/atkinson/Atkinson-Hyperlegible-Regular-102a.woff2") format("woff2")
-       url("../assets/atkinson/Atkinson-Hyperlegible-Regular-102a.woff") format("woff");
-}
-
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  font-style: normal;
-  font-weight: 600;
-  src: url("../assets/atkinson/Atkinson-Hyperlegible-Bold-102a.woff2") format("woff2")
-       url("../assets/atkinson/Atkinson-Hyperlegible-Bold-102a.woff") format("woff");
-}
-
 :root {
 	--sans: "Atkinson Hyperlegible";
+	/* --sans: "National 2 Web"; */
 	--mono: Menlo, Consolas, Monaco, "Courier New", monospace;
 
 	--bold: 600;
