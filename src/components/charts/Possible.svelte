@@ -123,8 +123,8 @@
   .card {
     position: relative;
     perspective: 1000px;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: 1px solid var(--bg);
   }
 
@@ -179,7 +179,7 @@
 
   .inner span {
     display: block;
-    font-size: 2.5em;
+    font-size: 1.75em;
     width: 100%;
     margin-top: 0.125em;
     position: relative;
@@ -205,5 +205,11 @@
     text-transform: uppercase;
     font-size: 0.75em;
     font-weight: var(--bold);
+  }
+
+  @media only screen and (min-width: 640px) {
+    .inner span {
+      font-size: 2.5em;
+    }
   }
 </style>

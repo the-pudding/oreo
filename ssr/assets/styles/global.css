@@ -126,6 +126,7 @@ b, strong {
 
 body {
 	font-weight: var(--normal);
+	background-color: var(--blue);
 }
 
 mark {

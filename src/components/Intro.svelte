@@ -107,6 +107,9 @@
   @media only screen and (min-width: 640px) {
     h3 {
       font-size: 4em;
+    }
+
+    h1 {
       display: block;
     }
 
