@@ -86,6 +86,7 @@
     padding: 0.5em 1em;
     padding-left: 1.5em;
     padding-top: 1.5em;
+    max-width: 9em;
   }
 
   .byline p {
