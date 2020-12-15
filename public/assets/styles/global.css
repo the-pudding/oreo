@@ -224,8 +224,13 @@ main {
 
 .svelte-crossword .toolbar button {
 	font-weight: var(--bold);
+	border: 1px solid var(--fg);
 }
 
 .svelte-crossword .play .clues {
 	height: 20em;
+}
+
+button {
+	border: 1px solid var(--fg);
 }

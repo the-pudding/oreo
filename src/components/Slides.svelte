@@ -41,9 +41,18 @@
   </div>
 </Slide>
 
-{#each slides as { text, className, chart, special, image }}
+{#each slides as { text, className, chart, special, image }, i}
   <Slide>
     <div class="slide-content {className || ''}">
+      {#if +level > 1 && i === slides.length - 1}
+        <p class="prev">
+          Level
+          {+level - 1}
+          <span>
+            <Icon name="arrow-up" /></span>
+        </p>
+      {/if}
+
       {#if typeof text === 'string'}
         <div class="graf">
           <p>
@@ -74,6 +83,15 @@
 
       {#if image}
         <Image name="{image}" />
+      {/if}
+
+      {#if +level < 3 && i === slides.length - 1}
+        <p class="next">
+          Level
+          {+level + 1}
+          <span>
+            <Icon name="arrow-down" /></span>
+        </p>
       {/if}
     </div>
   </Slide>

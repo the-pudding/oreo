@@ -3,6 +3,8 @@
   import { scaleLinear } from "d3-scale";
   import { format } from "d3-format";
 
+  let tip = true;
+
   const letters = [
     ["S", "O", "D", "A"],
     ["O", "V", "A", "L"],
@@ -23,6 +25,7 @@
   }));
 
   const flip = (i) => {
+    tip = false;
     flipped[i] = !flipped[i];
     flipped = flipped;
   };
@@ -40,7 +43,7 @@
 </script>
 
 <section>
-  <div class="grid">
+  <div class="grid" class:tip>
     {#each letters as ly, y}
       <div class="cards">
         {#each ly as letter, x}
@@ -118,6 +121,11 @@
     background: var(--highlight);
     color: var(--fg);
     opacity: 1;
+  }
+
+  .tip .cards:last-of-type .card:first-of-type {
+    animation: pulse 0.5s infinite alternate ease-in-out;
+    z-index: 1;
   }
 
   .card {
@@ -205,6 +213,17 @@
     text-transform: uppercase;
     font-size: 0.75em;
     font-weight: var(--bold);
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+      transform: scale(1.1);
+      box-shadow: 0 0 8px 4px var(--highlight);
+    }
   }
 
   @media only screen and (min-width: 640px) {

@@ -29,7 +29,10 @@
 </script>
 
 <figure>
-  <img src="assets/img/{data[name].src}" alt="{data[name].alt}" />
+  <img
+    loading="lazy"
+    src="assets/img/{data[name].src}"
+    alt="{data[name].alt}" />
   <figcaption>
     {@html data[name].caption}
   </figcaption>
