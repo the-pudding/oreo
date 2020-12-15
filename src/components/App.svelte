@@ -11,7 +11,8 @@
 
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
-  let innerWidth = 0;
+  let innerWidth;
+  let innerHeight;
 
   let sliderY;
   let activeY;
@@ -38,11 +39,11 @@
   $: full = !mobile;
   $: arrowPosition = mobile ? "end" : "center";
   $: activeX.join(""), activeY, updateArrows();
-  $: showArrows = currentX > 0 ? ["left", "right"] : false;
+  $: showArrows = currentX > 0 || mobile ? ["left", "right"] : false;
   $: disable = currentX === countX[activeY - 1] - 1 ? ["right"] : [];
 </script>
 
-<svelte:window bind:innerWidth />
+<svelte:window bind:innerWidth bind:innerHeight />
 
 <Meta {...copy} />
 
@@ -55,24 +56,34 @@
   arrowPosition="{arrowPosition}"
   on:tap="{onTap}" />
 
-<Slider
-  direction="vertical"
-  bind:this="{sliderY}"
-  bind:count="{countY}"
-  bind:active="{activeY}">
-  <Slide>
-    <Intro hed="{copy.hed}" intro="{copy.intro}" />
-  </Slide>
-
-  {#each copy.levels as level, i}
+<article style="height: {innerHeight}px;">
+  <Slider
+    direction="vertical"
+    bind:this="{sliderY}"
+    bind:count="{countY}"
+    bind:active="{activeY}">
     <Slide>
-      <Slider
-        direction="horizontal"
-        bind:this="{sliderX[i]}"
-        bind:count="{countX[i]}"
-        bind:active="{activeX[i]}">
-        <Slides {...level} />
-      </Slider>
+      <Intro hed="{copy.hed}" intro="{copy.intro}" />
     </Slide>
-  {/each}
-</Slider>
+
+    {#each copy.levels as level, i}
+      <Slide>
+        <Slider
+          direction="horizontal"
+          bind:this="{sliderX[i]}"
+          bind:count="{countX[i]}"
+          bind:active="{activeX[i]}">
+          <Slides {...level} />
+        </Slider>
+      </Slide>
+    {/each}
+  </Slider>
+</article>
+
+<style>
+  article {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+</style>

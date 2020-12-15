@@ -7,14 +7,18 @@
 
   const itemW = 74;
   const rows = 4;
-  let w = itemW;
+  let w;
+  let scale;
+  let sliced = [];
   let mounted = false;
 
-  $: x = Math.floor(w / itemW) || 1;
-  $: c = x * rows;
-  $: sliced = data.slice(0, c);
-  $: domain = [+sliced[c - 1].count, +sliced[0].count];
-  $: scale = scaleLinear().domain(domain).range([0, 100]);
+  $: if (w) {
+    const x = Math.floor(w / itemW);
+    const c = x * rows;
+    sliced = data.slice(0, c);
+    const domain = [+sliced[c - 1].count, +sliced[0].count];
+    scale = scaleLinear().domain(domain).range([0, 100]);
+  }
 
   onMount(() => {
     mounted = true;
@@ -22,8 +26,8 @@
 </script>
 
 {#if mounted}
-  <div class="outer" bind:clientWidth="{w}">
-    <div class="grid">
+  <div class="outer">
+    <div class="grid" bind:clientWidth="{w}">
       {#each sliced as { answer, count }, i}
         <div class="item" class:highlight="{answer === 'OREO'}">
           <span class="bg" style="opacity: {scale(+count)}%;"></span>

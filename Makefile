@@ -8,9 +8,9 @@ github:
 	git push
 
 aws-sync:
-	aws s3 sync ssr s3://pudding.cool/2020/11/crossword --delete --cache-control 'max-age=31536000'
+	aws s3 sync ssr s3://pudding.cool/2021/01/oreo --delete --cache-control 'max-age=31536000'
 
 aws-cache:
-	aws cloudfront create-invalidation --distribution-id E13X38CRR4E04D --paths '/2020/11/crossword*'	
+	aws cloudfront create-invalidation --distribution-id E13X38CRR4E04D --paths '/2021/01/oreo*'	
 
 pudding: aws-sync aws-cache

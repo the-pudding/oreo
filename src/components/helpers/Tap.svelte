@@ -15,9 +15,11 @@
   export let arrowPosition = "center"; // start, center, end
 
   const dispatch = createEventDispatcher();
+  let innerHeight;
 
+  // modified
   $: getW = (dir) =>
-    ["left", "right"].includes(dir) ? size : full ? "100%" : size;
+    ["left", "right"].includes(dir) ? size : full ? "100%" : "172px";
   $: getH = (dir) =>
     ["up", "down"].includes(dir) ? size : full ? "100%" : size;
 
@@ -35,9 +37,9 @@
   );
 </script>
 
-<svelte:window on:keydown="{onKeyDown}" />
+<svelte:window on:keydown="{onKeyDown}" bind:innerHeight />
 
-<section class="svelte-tap" class:debug>
+<section class:debug style="height: {innerHeight}px;">
   {#each directions as dir}
     <button
       on:click="{dispatch('tap', dir)}"
@@ -62,8 +64,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    z-index: 100;
+    height: 100%;
     z-index: var(--z-overlay);
     pointer-events: none;
   }
@@ -83,10 +84,6 @@
   button:disabled {
     opacity: 0.2;
     cursor: not-allowed;
-  }
-
-  button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .left {
@@ -121,13 +118,11 @@
   .up {
     top: 0;
     left: 0;
-    /* text-align: center; */
   }
 
   .down {
     bottom: 0;
     left: 0;
-    /* text-align: center; */
   }
 
   .up.center,
@@ -136,10 +131,11 @@
     transform: translateX(-50%);
   }
 
+  /* modified */
   .up.end,
   .down.end {
-    right: 0;
-    left: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   /* full positions */
@@ -197,5 +193,12 @@
   .debug .down {
     background: orange;
     opacity: 0.5;
+  }
+
+  @media only screen and (min-width: 640px) {
+    button.left:hover,
+    button.right:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
   }
 </style>

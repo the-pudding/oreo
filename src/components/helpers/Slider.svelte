@@ -16,8 +16,8 @@
 
   let children = 0;
   let index = 0;
-  let width = 0;
-  let height = 0;
+  let width;
+  let height;
   let isInView = false;
   let sliderEl;
   let translateEl;
@@ -54,8 +54,8 @@
 
   // context
   $: _direction.set(direction);
-  $: _width.set(`${width}px`);
-  $: _height.set(`${height}px`);
+  $: _width.set(width);
+  $: _height.set(height);
   $: context = { direction: _direction, width: _width, height: _height };
   $: setContext("Slider", context);
 
