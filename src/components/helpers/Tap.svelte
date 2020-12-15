@@ -3,9 +3,10 @@
   import Icon from "./Icon.svelte";
 
   export let debug = false;
-  export let showArrows = false;
-  export let disable = [];
   export let enableKeyboard = false;
+  export let full = false;
+  export let showArrows = false; // boolean or array of directions
+  export let disable = [];
   export let directions = ["left", "right"];
   export let size = "64px";
   export let arrowSize = "48px";
@@ -15,10 +16,12 @@
 
   const dispatch = createEventDispatcher();
 
-  const getW = (dir) => (["left", "right"].includes(dir) ? size : "100%");
-  const getH = (dir) => (["up", "down"].includes(dir) ? size : "100%");
+  $: getW = (dir) =>
+    ["left", "right"].includes(dir) ? size : full ? "100%" : size;
+  $: getH = (dir) =>
+    ["up", "down"].includes(dir) ? size : full ? "100%" : size;
 
-  const onKeyDown = (e) => {
+  $: onKeyDown = (e) => {
     const dir = e.key.replace("Arrow", "").toLowerCase();
     const hasDir = directions.includes(dir);
     if (enableKeyboard && hasDir) {
@@ -39,7 +42,9 @@
     <button
       on:click="{dispatch('tap', dir)}"
       style="width: {getW(dir)}; height: {getH(dir)};"
+      aria-label="{dir}"
       class="{dir} {arrowPosition}"
+      class:full
       disabled="{disable.includes(dir)}">
       {#if visibleArrows.includes(dir)}
         <span style="font-size: {arrowSize};"><Icon
@@ -77,6 +82,23 @@
 
   button:disabled {
     opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+  button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .left {
+    left: 0;
+    top: 0;
+    /* text-align: left; */
+  }
+
+  .right {
+    right: 0;
+    top: 0;
+    /* text-align: right; */
   }
 
   .left.start,
@@ -86,57 +108,69 @@
 
   .left.center,
   .right.center {
-    align-items: center;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .left.end,
-  .right-end {
-    align-items: flex-end;
-  }
-
-  .up.start,
-  .down.start {
-    justify-content: flex-start;
-  }
-
-  .up.center,
-  .down.center {
-    justify-content: center;
-  }
-
-  .up.end,
-  .down-end {
-    justify-content: flex-end;
-  }
-
-  .left,
-  .right {
-    height: 100%;
-    top: 0;
-  }
-
-  .left {
-    left: 0;
-    text-align: left;
-  }
-  .right {
-    right: 0;
-    text-align: right;
-  }
-
-  .up,
-  .down {
-    width: 100%;
-    left: 0;
-    text-align: center;
+  .right.end {
+    bottom: 0;
+    top: auto;
   }
 
   .up {
     top: 0;
+    left: 0;
+    /* text-align: center; */
   }
 
   .down {
     bottom: 0;
+    left: 0;
+    /* text-align: center; */
+  }
+
+  .up.center,
+  .down.center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .up.end,
+  .down.end {
+    right: 0;
+    left: auto;
+  }
+
+  /* full positions */
+  .full.left.start,
+  .full.right.start {
+    align-items: flex-start;
+  }
+
+  .full.left.center,
+  .full.right.center {
+    align-items: center;
+  }
+
+  .full.left.end,
+  .full.right.end {
+    align-items: flex-end;
+  }
+
+  .full.up.start,
+  .full.down.start {
+    justify-content: flex-start;
+  }
+
+  .full.up.center,
+  .full.down.center {
+    justify-content: center;
+  }
+
+  .full.up.end,
+  .full.down-end {
+    justify-content: flex-end;
   }
 
   span {

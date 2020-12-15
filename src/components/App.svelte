@@ -11,8 +11,7 @@
 
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
-
-  let showArrows = false;
+  let innerWidth = 0;
 
   let sliderY;
   let activeY;
@@ -35,18 +34,25 @@
     currentX = activeX[activeY - 1];
   };
 
+  $: mobile = innerWidth < 640;
+  $: full = !mobile;
+  $: arrowPosition = mobile ? "end" : "center";
   $: activeX.join(""), activeY, updateArrows();
   $: showArrows = currentX > 0 ? ["left", "right"] : false;
   $: disable = currentX === countX[activeY - 1] - 1 ? ["right"] : [];
 </script>
+
+<svelte:window bind:innerWidth />
 
 <Meta {...copy} />
 
 <Tap
   directions="{['up', 'down', 'left', 'right']}"
   showArrows="{showArrows}"
+  full="{full}"
   disable="{disable}"
   enableKeyboard="{true}"
+  arrowPosition="{arrowPosition}"
   on:tap="{onTap}" />
 
 <Slider

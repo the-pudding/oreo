@@ -27,7 +27,7 @@
   <h3><mark>{intro}</mark></h3>
 
   <div class="instructions">
-    <p>Use arrow keys or tap to navigate</p>
+    <p><span class="desktop">Use arrow keys or </span>tap to navigate</p>
     <div class="keys">
       <ArrowKeys active="down" />
     </div>
@@ -100,6 +100,11 @@
     margin-top: 2em;
     text-align: center;
   }
+
+  .desktop {
+    display: none;
+  }
+
   .keys {
     display: flex;
     justify-content: center;
@@ -118,6 +123,10 @@
     .byline {
       align-items: flex-end;
       padding: 0.5em 1em;
+    }
+
+    .desktop {
+      display: inline;
     }
   }
 </style>
