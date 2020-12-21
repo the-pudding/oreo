@@ -32,6 +32,12 @@
       <ArrowKeys active="down" />
     </div>
   </div>
+
+  <p class="next">
+    Level 1
+    <span>
+      <Icon name="arrow-down" /></span>
+  </p>
 </section>
 
 <style>
@@ -86,7 +92,7 @@
     padding: 0.5em 1em;
     padding-left: 1.5em;
     padding-top: 1.5em;
-    max-width: 11em;
+    max-width: 12em;
   }
 
   .byline p {
@@ -108,6 +114,33 @@
   .keys {
     display: flex;
     justify-content: center;
+  }
+
+  p.next {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 0.5em 0.75em;
+    background-color: var(--fg);
+    line-height: 1;
+    margin: 0.1em;
+    border-radius: 4px;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    color: var(--off-white);
+    text-transform: uppercase;
+  }
+
+  .next span {
+    margin-left: 0.5em;
+    display: flex;
+    align-items: center;
+  }
+
+  .next {
+    bottom: 1em;
   }
 
   @media only screen and (min-width: 640px) {

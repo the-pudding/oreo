@@ -115,7 +115,8 @@
     margin: 0 auto;
     overflow: hidden;
     font-size: 18px;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 1em;
   }
 
   .slide-content p {
@@ -159,6 +160,7 @@
 
   .reverse {
     flex-direction: column-reverse;
+    justify-content: flex-end;
   }
 
   p.prev,
@@ -198,10 +200,15 @@
     .slide-content {
       font-size: 21px;
       padding: 0 4rem;
+      justify-content: center;
     }
 
     .text {
       font-size: 1.25em;
+    }
+
+    .reverse {
+      justify-content: center;
     }
   }
 </style>

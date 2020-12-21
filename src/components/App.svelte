@@ -39,8 +39,16 @@
   $: full = !mobile;
   $: arrowPosition = mobile ? "end" : "center";
   $: activeX.join(""), activeY, updateArrows();
-  $: showArrows = currentX > 0 || mobile ? ["left", "right"] : false;
-  $: disable = currentX === countX[activeY - 1] - 1 ? ["right"] : [];
+  $: showArrows =
+    activeY > 0 && (currentX > 0 || mobile) ? ["left", "right"] : false;
+  $: disableUD = activeY === 0 ? "up" : activeY === countY - 1 ? "down" : "";
+  $: disableLR =
+    currentX === countX[activeY - 1] - 1
+      ? ["right"]
+      : currentX === 0
+      ? "left"
+      : "";
+  $: disable = [disableLR, disableUD].filter((d) => d);
 </script>
 
 <svelte:window bind:innerWidth bind:innerHeight />

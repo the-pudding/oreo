@@ -84,6 +84,7 @@
   button:disabled {
     opacity: 0.2;
     cursor: not-allowed;
+    pointer-events: none;
   }
 
   .left {
