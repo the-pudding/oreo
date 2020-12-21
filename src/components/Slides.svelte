@@ -114,7 +114,7 @@
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
-    font-size: 18px;
+    font-size: 17px;
     justify-content: flex-start;
     padding-top: 1em;
   }
