@@ -47,6 +47,7 @@
       aria-label="{dir}"
       class="{dir} {arrowPosition}"
       class:full
+      class:visible="{visibleArrows.includes(dir)}"
       disabled="{disable.includes(dir)}">
       {#if visibleArrows.includes(dir)}
         <span style="font-size: {arrowSize};"><Icon
@@ -197,8 +198,8 @@
   }
 
   @media only screen and (min-width: 640px) {
-    button.left:hover,
-    button.right:hover {
+    button.visible.left:hover,
+    button.visible.right:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
   }

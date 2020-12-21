@@ -67,6 +67,8 @@
       rootMargin: "-1px",
     });
     observer.observe(sliderEl);
+    height = height;
+    width = width;
   });
 </script>
 

@@ -39,8 +39,7 @@
   $: full = !mobile;
   $: arrowPosition = mobile ? "end" : "center";
   $: activeX.join(""), activeY, updateArrows();
-  $: showArrows =
-    activeY > 0 && (currentX > 0 || mobile) ? ["left", "right"] : false;
+  $: showArrows = activeY > 0 ? ["left", "right"] : false;
   $: disableUD = activeY === 0 ? "up" : activeY === countY - 1 ? "down" : "";
   $: disableLR =
     currentX === countX[activeY - 1] - 1
