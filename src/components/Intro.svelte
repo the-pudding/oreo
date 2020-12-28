@@ -126,7 +126,7 @@
     line-height: 1;
     margin: 0.1em;
     border-radius: 4px;
-    font-size: 0.75em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     color: var(--off-white);

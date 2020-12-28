@@ -12,7 +12,6 @@
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
   let innerWidth;
-  let innerHeight;
 
   let sliderY;
   let activeY;
@@ -50,7 +49,7 @@
   $: disable = [disableLR, disableUD].filter((d) => d);
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
+<svelte:window bind:innerWidth />
 
 <Meta {...copy} />
 
@@ -63,7 +62,7 @@
   arrowPosition="{arrowPosition}"
   on:tap="{onTap}" />
 
-<article style="height: {innerHeight}px;">
+<article>
   <Slider
     direction="vertical"
     bind:this="{sliderY}"
@@ -90,7 +89,7 @@
 <style>
   article {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
   }
 </style>
