@@ -145,7 +145,7 @@
 
   @media only screen and (min-width: 640px) {
     h3 {
-      font-size: 4em;
+      font-size: 3em;
     }
 
     h1 {
@@ -160,6 +160,12 @@
 
     .desktop {
       display: inline;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    h3 {
+      font-size: 4em;
     }
   }
 </style>
