@@ -27,7 +27,7 @@
   <h3><mark>{intro}</mark></h3>
 
   <div class="instructions">
-    <p><span class="desktop">Use arrow keys or </span>tap to navigate</p>
+    <p><span class="desktop">Use arrow keys or </span>tap below to navigate</p>
     <div class="keys">
       <ArrowKeys active="down" />
     </div>

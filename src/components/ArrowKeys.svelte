@@ -18,7 +18,7 @@
 
 <style>
   div {
-    display: grid;
+    display: none;
     grid: repeat(2, 1fr) / repeat(3, 1fr);
     font-size: 1rem;
     width: 5em;
@@ -103,6 +103,12 @@
     100% {
       transform: translateX(33%);
       box-shadow: 0 0 8px 4px var(--highlight);
+    }
+  }
+
+  @media only screen and (min-width: 640px) {
+    div {
+      display: grid;
     }
   }
 </style>

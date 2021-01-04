@@ -27,14 +27,15 @@
     <p class="level">Level {level}</p>
     <p class="version"><strong>{version}</strong></p>
     <Oreo version="{version}" />
-    <p class="duration">~ {duration}</p>
+    <p class="duration">~ {duration} read</p>
     <p class="text">{text}</p>
     <ArrowKeys active="right" />
     {#if +level < 3}
       <p class="next">
         Level
         {+level + 1}
-        <span>
+        <span class="complex">: {+level === 1 ? 'more' : 'most'} complex</span>
+        <span class="arrow">
           <Icon name="arrow-down" /></span>
       </p>
     {/if}
@@ -89,7 +90,7 @@
         <p class="next">
           Level
           {+level + 1}
-          <span>
+          <span class="arrow">
             <Icon name="arrow-down" /></span>
         </p>
       {/if}
@@ -147,6 +148,7 @@
 
   .duration {
     font-size: 0.75em;
+    /* text-transform: uppercase; */
   }
 
   .oreo {
@@ -182,7 +184,7 @@
   }
 
   .prev span,
-  .next span {
+  .next span.arrow {
     margin-left: 0.5em;
     display: flex;
     align-items: center;
@@ -194,6 +196,10 @@
 
   .next {
     bottom: 1em;
+  }
+
+  .complex {
+    display: none;
   }
 
   @media only screen and (min-width: 640px) {
@@ -209,6 +215,9 @@
 
     .reverse {
       justify-content: center;
+    }
+    .complex {
+      display: inline;
     }
   }
 </style>

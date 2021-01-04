@@ -8,14 +8,16 @@
   export let showArrows = false; // boolean or array of directions
   export let disable = [];
   export let directions = ["left", "right"];
-  export let size = "64px";
-  export let arrowSize = "48px";
   export let arrowStroke = "#000";
   export let arrowStrokeWidth = "2";
   export let arrowPosition = "center"; // start, center, end
 
   const dispatch = createEventDispatcher();
   let innerHeight;
+  let innerWidth;
+
+  $: size = innerWidth < 640 ? "72px" : "64px";
+  $: arrowSize = innerWidth < 640 ? "64px" : "48px";
 
   // modified
   $: getW = (dir) =>
@@ -37,7 +39,7 @@
   );
 </script>
 
-<svelte:window on:keydown="{onKeyDown}" bind:innerHeight />
+<svelte:window on:keydown="{onKeyDown}" bind:innerHeight bind:innerWidth />
 
 <section class:debug style="height: {innerHeight}px;">
   {#each directions as dir}

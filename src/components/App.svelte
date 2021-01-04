@@ -9,9 +9,13 @@
   import Progress from "./helpers/Progress.svelte";
   import Slider from "./helpers/Slider.svelte";
   import Slide from "./helpers/Slider.Slide.svelte";
+  import loadImage from "../utils/loadImage.js";
 
   import { visibleIndex } from "../stores/nav.js";
   import copy from "../data/copy.json";
+
+  const gif = "https://pudding.cool/assets/img/custom.gif";
+
   let innerWidth;
 
   let sliderY;
@@ -35,6 +39,14 @@
     currentX = activeX[activeY - 1];
   };
 
+  let visited = [];
+
+  const log = (y) => {
+    if (!visited[y])
+      loadImage(`${gif}?key=y&value=${visited[visited.length - 1]}`);
+    visited[y] = true;
+  };
+
   $: mobile = innerWidth < 640;
   $: full = !mobile;
   $: arrowPosition = mobile ? "end" : "center";
@@ -43,11 +55,12 @@
   $: disableUD = activeY === 0 ? "up" : activeY === countY - 1 ? "down" : "";
   $: disableLR =
     currentX === countX[activeY - 1] - 1
-      ? ["right"]
+      ? "right"
       : currentX === 0
       ? "left"
       : "";
   $: disable = [disableLR, disableUD].filter((d) => d);
+  $: if (activeY > 0) log(activeY);
 </script>
 
 <svelte:window bind:innerWidth />
