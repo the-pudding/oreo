@@ -157,7 +157,7 @@
     margin: 1px;
     background: var(--highlight);
     width: 8em;
-    height: 2em;
+    height: 3em;
     font-size: 0.625em;
     border-radius: 4px;
     text-align: center;
