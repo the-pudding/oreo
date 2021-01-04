@@ -108,15 +108,20 @@
 </script>
 
 <section>
-  <fieldset>
-    <label for="clue">How would <em>you</em> clue <strong>OREO</strong>?</label>
-    <input
-      bind:value="{guess}"
-      name="clue"
-      placeholder="Enter clue description..."
-      maxlength="{maxLength}" />
-    <button on:click="{onSubmit}">Submit</button>
-  </fieldset>
+  <form>
+    <fieldset>
+      <label for="clue">How would
+        <em>you</em>
+        clue
+        <strong>OREO</strong>?</label>
+      <input
+        bind:value="{guess}"
+        name="clue"
+        placeholder="Enter clue description..."
+        maxlength="{maxLength}" />
+      <button type="submit" on:click="{onSubmit}">Submit</button>
+    </fieldset>
+  </form>
 
   <div class="result" class:reveal>
     <h3>The ten most similar clues (times used)</h3>

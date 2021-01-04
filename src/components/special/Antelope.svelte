@@ -39,7 +39,7 @@
   const onSubmit = (e) => {
     e.preventDefault();
     const match = terms.find((d) => d.name === upper);
-    match.correct = true;
+    if (match) match.correct = true;
     terms = terms;
     guess = "";
   };
@@ -52,13 +52,15 @@
 </script>
 
 <section>
-  <fieldset>
-    <input
-      bind:value="{guess}"
-      name="clue"
-      placeholder="Name an African antelope" />
-    <button on:click="{onSubmit}">Submit</button>
-  </fieldset>
+  <form>
+    <fieldset>
+      <input
+        bind:value="{guess}"
+        name="clue"
+        placeholder="Name an African antelope" />
+      <button type="submit" on:click="{onSubmit}">Submit</button>
+    </fieldset>
+  </form>
   <p><button on:click="{onReveal}">Reveal Answers</button></p>
 </section>
 <div class="outer">
