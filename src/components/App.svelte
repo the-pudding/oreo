@@ -6,6 +6,7 @@
   import Intro from "./Intro.svelte";
   import Slides from "./Slides.svelte";
   import Tap from "./helpers/Tap.svelte";
+  import Progress from "./helpers/Progress.svelte";
   import Slider from "./helpers/Slider.svelte";
   import Slide from "./helpers/Slider.Slide.svelte";
 
@@ -52,6 +53,8 @@
 <svelte:window bind:innerWidth />
 
 <Meta {...copy} />
+
+<Progress total="{countX[activeY - 1] - 1}" current="{currentX}" />
 
 <Tap
   directions="{['up', 'down', 'left', 'right']}"
