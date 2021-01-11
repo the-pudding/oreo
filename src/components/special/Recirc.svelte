@@ -22,7 +22,7 @@
   {#await fetchData then data}
     {#each data as { hed, url, image }}
       <div class="story">
-        <p><a href="{url}">{hed}</a></p>
+        <p><a href="https://pudding.cool/{url}">{hed}</a></p>
       </div>
     {/each}
   {/await}
