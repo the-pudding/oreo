@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { csv } from "d3-fetch";
   import { format } from "d3-format";
+  import { innerH } from "../../stores/nav.js";
   import raw from "../../data/xd-oreo-clue-common-words-1993.csv";
 
   const words = raw.map((d) => ({ ...d, count: +d.count })).slice(0, 12);
@@ -20,7 +21,7 @@
 
   $: examples = clues
     .filter((d) => d.clue.toLowerCase().includes(active))
-    .slice(0, 10)
+    .slice(0, $innerH < 640 ? 8 : 10)
     .map((d) => ({
       ...d,
       marked: addMark(d.clue),
@@ -42,6 +43,8 @@
         console.log(err);
       });
   });
+
+  $: filtered = words.slice(0, $innerH < 640 ? 10 : 12);
 </script>
 
 <div class="outer">
@@ -56,11 +59,11 @@
       {/each}
     </select>
     <ul class="words">
-      {#each words as { word, count }}
+      {#each filtered as { word, count }}
         <li class:active="{active === word}">
           <button on:click="{() => (active = word)}">
             <span class="word">{word}</span>
-            <span class="count">{format(',')(count)}</span>
+            <span class="count">{format(",")(count)}</span>
           </button>
         </li>
       {/each}
@@ -68,12 +71,12 @@
   </div>
 
   <div class="right">
-    <h3>Top 10 Examples (times used)</h3>
+    <h3>Top {$innerH < 640 ? 8 : 10} Examples (times used)</h3>
     <ul class="clues">
       {#each examples as { count, marked } (marked)}
         <li>
           <span class="clue">{@html marked}</span>
-          <span class="count">({format(',')(count)})</span>
+          <span class="count">({format(",")(count)})</span>
         </li>
       {/each}
     </ul>

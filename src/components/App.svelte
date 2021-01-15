@@ -11,12 +11,13 @@
   import Slide from "./helpers/Slider.Slide.svelte";
   import loadImage from "../utils/loadImage.js";
 
-  import { visibleIndex } from "../stores/nav.js";
+  import { visibleIndex, innerH } from "../stores/nav.js";
   import copy from "../data/copy.json";
 
   const gif = "https://pudding.cool/assets/img/custom.gif";
 
   let innerWidth;
+  let innerHeight;
 
   let sliderY;
   let activeY;
@@ -61,9 +62,10 @@
       : "";
   $: disable = [disableLR, disableUD].filter((d) => d);
   $: if (activeY > 0) log(activeY);
+  $: $innerH = innerHeight;
 </script>
 
-<svelte:window bind:innerWidth />
+<svelte:window bind:innerWidth bind:innerHeight />
 
 <Meta {...copy} />
 
@@ -76,14 +78,16 @@
   disable="{disable}"
   enableKeyboard="{true}"
   arrowPosition="{arrowPosition}"
-  on:tap="{onTap}" />
+  on:tap="{onTap}"
+/>
 
 <article>
   <Slider
     direction="vertical"
     bind:this="{sliderY}"
     bind:count="{countY}"
-    bind:active="{activeY}">
+    bind:active="{activeY}"
+  >
     <Slide>
       <Intro hed="{copy.hed}" intro="{copy.intro}" />
     </Slide>
@@ -94,7 +98,8 @@
           direction="horizontal"
           bind:this="{sliderX[i]}"
           bind:count="{countX[i]}"
-          bind:active="{activeX[i]}">
+          bind:active="{activeX[i]}"
+        >
           <Slides {...level} />
         </Slider>
       </Slide>
