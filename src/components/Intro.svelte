@@ -16,8 +16,7 @@
       </div>
 
       <p>
-        <a href="https://pudding.cool/author/russell-goldenberg">Russell
-          Goldenberg</a>
+        <a href="https://pudding.cool/author/russell-samora">Russell Samora</a>
       </p>
 
       <time>January 2021</time>
@@ -35,8 +34,7 @@
 
   <p class="next">
     Level 1
-    <span>
-      <Icon name="arrow-down" /></span>
+    <span> <Icon name="arrow-down" /></span>
   </p>
 </section>
 
